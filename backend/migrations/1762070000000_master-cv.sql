@@ -3,11 +3,14 @@
 -- Modèle relationnel du CV maître (CVIP-14).
 -- Le CV est stocké uniquement sous forme structurée : aucun fichier Word/PDF
 -- n'est conservé comme source (seule la photo est référencée dans le stockage objet).
+-- Champs traduisibles : une colonne _fr et une colonne _en (cahier des charges, section 6).
 
 -- Texte libre en Markdown limité (gras, listes) : le HTML est refusé.
 -- La validation fine de la syntaxe autorisée est faite côté API.
 CREATE DOMAIN markdown_text AS text
   CHECK (VALUE !~ '<[A-Za-z!/?]');
+
+CREATE TYPE skill_kind AS ENUM ('technical', 'functional');
 
 CREATE TYPE cefr_level AS ENUM ('A1', 'A2', 'B1', 'B2', 'C1', 'C2');
 
@@ -25,6 +28,7 @@ $$ LANGUAGE plpgsql;
 CREATE TABLE skill (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   name text NOT NULL CHECK (btrim(name) <> ''),
+  kind skill_kind NOT NULL DEFAULT 'technical',
   category text,
   -- Fusion de doublons (« ReactJS » -> « React ») : l'élément fusionné pointe vers le canonique.
   merged_into_id uuid REFERENCES skill (id),
@@ -38,17 +42,19 @@ CREATE UNIQUE INDEX skill_name_key ON skill (lower(name));
 -- Échelle de niveaux paramétrable.
 CREATE TABLE skill_level (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  label text NOT NULL UNIQUE,
+  label_fr text NOT NULL UNIQUE,
+  label_en text,
   rank smallint NOT NULL UNIQUE,
   active boolean NOT NULL DEFAULT true
 );
 
 CREATE TABLE sector (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  name text NOT NULL CHECK (btrim(name) <> ''),
+  name_fr text NOT NULL CHECK (btrim(name_fr) <> ''),
+  name_en text,
   active boolean NOT NULL DEFAULT true
 );
-CREATE UNIQUE INDEX sector_name_key ON sector (lower(name));
+CREATE UNIQUE INDEX sector_name_key ON sector (lower(name_fr));
 
 CREATE TABLE certification (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -75,9 +81,13 @@ CREATE UNIQUE INDEX consultant_email_key ON consultant (lower(email));
 CREATE TABLE master_cv (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   consultant_id uuid NOT NULL UNIQUE REFERENCES consultant (id) ON DELETE CASCADE,
-  job_title text,
+  job_title_fr text,
+  job_title_en text,
   years_of_experience smallint CHECK (years_of_experience >= 0),
-  summary markdown_text,
+  summary_fr markdown_text,
+  summary_en markdown_text,
+  interests_fr markdown_text,
+  interests_en markdown_text,
   photo_key text,
   created_at timestamptz NOT NULL DEFAULT now(),
   -- Date de dernière mise à jour du CV, rubriques comprises (voir touch_master_cv).
@@ -105,11 +115,21 @@ CREATE TABLE cv_language (
   UNIQUE (cv_id, language_code)
 );
 
+-- Secteurs d'activité mis en avant sur le CV.
+CREATE TABLE cv_sector (
+  cv_id uuid NOT NULL REFERENCES master_cv (id) ON DELETE CASCADE,
+  sector_id uuid NOT NULL REFERENCES sector (id),
+  position smallint NOT NULL DEFAULT 0,
+  PRIMARY KEY (cv_id, sector_id)
+);
+CREATE INDEX cv_sector_sector_id_idx ON cv_sector (sector_id);
+
 -- Formation initiale (diplômes).
 CREATE TABLE cv_education (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   cv_id uuid NOT NULL REFERENCES master_cv (id) ON DELETE CASCADE,
-  degree text NOT NULL,
+  degree_fr text NOT NULL,
+  degree_en text,
   school text,
   year smallint CHECK (year BETWEEN 1950 AND 2100),
   position smallint NOT NULL DEFAULT 0
@@ -144,10 +164,12 @@ CREATE TABLE cv_experience (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   cv_id uuid NOT NULL REFERENCES master_cv (id) ON DELETE CASCADE,
   company text NOT NULL,
-  title text NOT NULL,
+  title_fr text NOT NULL,
+  title_en text,
   start_date date NOT NULL,
   end_date date CHECK (end_date >= start_date),
-  description markdown_text,
+  description_fr markdown_text,
+  description_en markdown_text,
   sector_id uuid REFERENCES sector (id),
   -- Saisie manuelle au lot 1 ; alimentation par le module Missions au lot 2 (mission_ref = identifiant source).
   source experience_source NOT NULL DEFAULT 'manual',
@@ -187,6 +209,8 @@ CREATE TRIGGER cv_skill_touch_master_cv AFTER INSERT OR UPDATE OR DELETE ON cv_s
   FOR EACH ROW EXECUTE FUNCTION touch_master_cv();
 CREATE TRIGGER cv_language_touch_master_cv AFTER INSERT OR UPDATE OR DELETE ON cv_language
   FOR EACH ROW EXECUTE FUNCTION touch_master_cv();
+CREATE TRIGGER cv_sector_touch_master_cv AFTER INSERT OR UPDATE OR DELETE ON cv_sector
+  FOR EACH ROW EXECUTE FUNCTION touch_master_cv();
 CREATE TRIGGER cv_education_touch_master_cv AFTER INSERT OR UPDATE OR DELETE ON cv_education
   FOR EACH ROW EXECUTE FUNCTION touch_master_cv();
 CREATE TRIGGER cv_training_touch_master_cv AFTER INSERT OR UPDATE OR DELETE ON cv_training
@@ -203,6 +227,7 @@ DROP TABLE cv_experience;
 DROP TABLE cv_certification;
 DROP TABLE cv_training;
 DROP TABLE cv_education;
+DROP TABLE cv_sector;
 DROP TABLE cv_language;
 DROP TABLE cv_skill;
 DROP TABLE master_cv;
@@ -215,4 +240,5 @@ DROP FUNCTION touch_master_cv();
 DROP FUNCTION set_updated_at();
 DROP TYPE experience_source;
 DROP TYPE cefr_level;
+DROP TYPE skill_kind;
 DROP DOMAIN markdown_text;
