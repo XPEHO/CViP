@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: cvip
+          POSTGRES_PASSWORD: cvip
+          POSTGRES_DB: cvip
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cvip -d cvip"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgres://cvip:cvip@localhost:5432/cvip
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Migrations
+        run: npm run db:migrate
+
+      - name: Tests
+        run: npm test
+
+      - name: Build
+        run: npm run build

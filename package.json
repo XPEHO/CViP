@@ -1,0 +1,22 @@
+{
+  "name": "cvip",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:backend": "npm run dev -w backend",
+    "dev:frontend": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "db:migrate": "npm run migrate:up -w backend"
+  },
+  "devDependencies": {
+    "npm-run-all2": "^9.0.4"
+  }
+}
