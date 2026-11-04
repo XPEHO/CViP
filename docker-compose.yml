@@ -17,5 +17,36 @@ services:
       timeout: 5s
       retries: 10
 
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      PORT: 3000
+      PHOTOS_DIR: /data/photos
+    ports:
+      - "${PORT:-3000}:3000"
+    volumes:
+      - photos:/data/photos
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    environment:
+      BACKEND_URL: http://backend:3000
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      - backend
+
 volumes:
   db-data:
+  photos:

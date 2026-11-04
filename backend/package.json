@@ -9,6 +9,7 @@
     "start": "node src/server.js",
     "lint": "eslint .",
     "test": "node --env-file-if-exists=../.env --test",
+    "test:coverage": "mkdir -p coverage && node --env-file-if-exists=../.env --test --experimental-test-coverage --test-coverage-include='src/**' --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info",
     "migrate": "node-pg-migrate -m migrations --migration-file-language sql --envPath ../.env",
     "migrate:up": "npm run migrate -- up",
     "migrate:down": "npm run migrate -- down",

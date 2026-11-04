@@ -26,6 +26,16 @@ npm run dev            # backend (http://localhost:3000) + frontend (http://loca
 
 Le serveur Vite proxifie `/api/*` vers le backend : `http://localhost:5173/api/health` vérifie l'API et la connexion à la base.
 
+### Stack conteneurisée
+
+```sh
+docker compose up -d --build   # Postgres + backend (http://localhost:3000) + frontend (http://localhost:8080)
+```
+
+Le frontend est servi par nginx, qui proxifie `/api/*` vers le backend (`BACKEND_URL`). Le port exposé se règle avec `FRONTEND_PORT`.
+
+Le backend conteneurisé stocke les photos dans le volume Docker `photos`, monté sur `/data/photos` (chemin exposé via la variable `PHOTOS_DIR`). Ne pas lancer `npm run dev:backend` en même temps (même port 3000).
+
 ## Scripts
 
 | Commande               | Description                          |
