@@ -30,7 +30,7 @@ jobs:
     env:
       DATABASE_URL: postgres://cvip:cvip@localhost:5432/cvip
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
     steps:
       - uses: actions/checkout@v5
