@@ -39,7 +39,7 @@ const createCv = async () => {
 test('un CV maître complet peut être saisi', inTransaction(async () => {
   const cv = await createCv()
   const { rows: [skill] } = await client.query(`INSERT INTO skill (name) VALUES ('Vue.js') RETURNING id`)
-  const { rows: [level] } = await client.query(`INSERT INTO skill_level (label_fr, rank) VALUES ('Expert', 4) RETURNING id`)
+  const { rows: [level] } = await client.query(`SELECT id FROM skill_level WHERE label_fr = 'Expert'`)
   const { rows: [sector] } = await client.query(`INSERT INTO sector (name_fr) VALUES ('Banque') RETURNING id`)
 
   await client.query('INSERT INTO cv_skill (cv_id, skill_id, level_id, years) VALUES ($1, $2, $3, 5)', [cv.id, skill.id, level.id])

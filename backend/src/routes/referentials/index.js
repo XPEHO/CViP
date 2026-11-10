@@ -1,0 +1,17 @@
+import { Router } from 'express'
+import skills from './skills.js'
+import skillLevels from './skill-levels.js'
+import sectors from './sectors.js'
+import certifications from './certifications.js'
+
+// Référentiels du CV maître (CVIP-15).
+// TODO CVIP-12 : réserver les écritures aux rôles RH et Administrateur. L'autocomplétion
+// (GET /suggest) et POST /skills/resolve restent ouverts à tout utilisateur connecté.
+const router = Router()
+
+router.use('/skills', skills)
+router.use('/skill-levels', skillLevels)
+router.use('/sectors', sectors)
+router.use('/certifications', certifications)
+
+export default router
