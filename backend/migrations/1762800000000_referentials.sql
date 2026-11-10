@@ -48,8 +48,8 @@ INSERT INTO skill_level (label_fr, label_en, rank) VALUES
 
 -- Down Migration
 
-DELETE FROM skill_level WHERE (label_fr, rank) IN
-  (('Notions', 1), ('Débutant', 2), ('Intermédiaire', 3), ('Confirmé', 4), ('Expert', 5));
+-- Niveaux de l'échelle par défaut, même renommés depuis.
+DELETE FROM skill_level WHERE rank BETWEEN 1 AND 5;
 
 ALTER TABLE skill_level
   DROP CONSTRAINT skill_level_rank_check,

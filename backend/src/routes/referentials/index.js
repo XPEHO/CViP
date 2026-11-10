@@ -5,8 +5,8 @@ import sectors from './sectors.js'
 import certifications from './certifications.js'
 
 // Référentiels du CV maître (CVIP-15).
-// TODO CVIP-12 : réserver les écritures aux rôles RH et Administrateur. L'autocomplétion
-// (GET /suggest) et POST /skills/resolve restent ouverts à tout utilisateur connecté.
+// Contrôle d'accès suivi par CVIP-12 : écritures réservées aux rôles RH et Administrateur ;
+// l'autocomplétion (GET /suggest) et POST /skills/resolve restent ouverts à tout utilisateur connecté.
 const router = Router()
 
 router.use('/skills', skills)

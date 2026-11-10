@@ -3,14 +3,14 @@ import { HttpError } from './http-error.js'
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 // Saisie libre normalisée : espaces superflus supprimés, casse conservée.
-export const normalizeName = (value) => value.trim().replace(/\s+/g, ' ')
+export const normalizeName = (value) => value.trim().replaceAll(/\s+/g, ' ')
 
 export const parseUuid = (value, label = 'id') => {
   if (typeof value !== 'string' || !UUID_RE.test(value)) throw new HttpError(400, `${label} invalide`)
   return value.toLowerCase()
 }
 
-export const escapeLike = (value) => value.replace(/[\\%_]/g, '\\$&')
+export const escapeLike = (value) => value.replaceAll(/[\\%_]/g, String.raw`\$&`)
 
 export const parseQueryString = (value, label) => {
   if (value === undefined) return undefined
