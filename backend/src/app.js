@@ -3,6 +3,7 @@ import cors from 'cors'
 import healthRouter from './routes/health.js'
 
 const app = express()
+app.disable("x-powered-by");
 
 app.use(cors({ origin: process.env.CORS_ORIGIN }))
 app.use(express.json())
