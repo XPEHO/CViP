@@ -11,7 +11,7 @@ RUN npm ci -w frontend
 COPY frontend frontend
 RUN npm run build -w frontend
 
-FROM nginx:1.29-alpine
+FROM nginx:1.31-alpine
 
 # URL du backend vers laquelle /api/* est proxifié (substituée au démarrage)
 ENV BACKEND_URL=http://backend:3000
