@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_call:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: cvip
+          POSTGRES_PASSWORD: cvip
+          POSTGRES_DB: cvip
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cvip -d cvip"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgres://cvip:cvip@localhost:5432/cvip
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # historique complet pour l'analyse Sonar (blame, nouveau code)
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Migrations
+        run: npm run db:migrate
+
+      - name: Tests
+        run: npm run test:coverage
+
+      # Les chemins lcov sont relatifs à chaque workspace, Sonar les attend depuis la racine
+      - name: Chemins de couverture
+        run: |
+          sed -i 's#^SF:#SF:backend/#' backend/coverage/lcov.info
+          sed -i 's#^SF:#SF:frontend/#' frontend/coverage/lcov.info
+
+      # Sans token (PR de fork, Dependabot), l'analyse est ignorée
+      - name: SonarQube
+        if: env.SONAR_TOKEN != ''
+        uses: SonarSource/sonarqube-scan-action@v8
+
+      - name: Build
+        run: npm run build
+
+  docker:
+    # Vérifie que les images se construisent (sans push) sur les PR
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.app }}/Dockerfile
+          push: false
+          cache-from: type=gha,scope=${{ matrix.app }}
