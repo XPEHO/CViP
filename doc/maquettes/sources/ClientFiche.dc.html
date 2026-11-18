@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Fiche client</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
+a{color:#1F4FB5}a:hover{color:#163A87}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F5F2; display: flex; flex-wrap: wrap; font-family: 'Manrope', system-ui, sans-serif; color: #1B1F24">
+
+<nav aria-label="Navigation principale" style="flex: 1 1 220px; background: #FFFFFF; border-right: 1px solid #E3E1DB; padding: 24px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+<div style="width: 36px; height: 36px; border-radius: 8px; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px">CV</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-weight: 800; font-size: 16px">CVthèque</span>
+<span style="font-size: 12px; color: #5A6069">XPEHO</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 0 12px 6px">Commerce</span>
+<a href="Consultants.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Consultants</a>
+<a href="AppelsOffre.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Appels d'offre &amp; versions</a>
+<a href="Partage.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Liens partagés</a>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 18px 12px 6px">Référentiels</span>
+<a href="Clients.dc.html" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; color: #1F4FB5; background: #E8EEFB">Clients</a>
+<a href="Projets.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Projets</a>
+<a href="#" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Compétences &amp; technos</a>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; background: #F6F5F2">
+<div style="width: 32px; height: 32px; border-radius: 50%; background: #F3E3D3; color: #7A3E12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">SM</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 13px; font-weight: 700">Sophie Martin</span>
+<span style="font-size: 12px; color: #5A6069">Rôle : Commercial</span>
+</div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; color: #5A6069; font-weight: 600"><a href="Clients.dc.html" style="text-decoration: none; font-weight: 600">Clients</a> / Banque Ouest</span>
+<h1 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.01em">Banque Ouest</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 4px 10px; border-radius: 6px; background: #F0EFEB; font-size: 12px; font-weight: 700">Banque &amp; assurance</span>
+<span style="padding: 4px 10px; border-radius: 6px; background: #F0EFEB; font-size: 12px; font-weight: 700">Nantes</span>
+<span style="padding: 4px 10px; border-radius: 6px; background: #F0EFEB; font-size: 12px; font-weight: 700">Client depuis 2024</span>
+</div>
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<button type="button" style="min-height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #C9C6BE; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; color: #1B1F24">Modifier</button>
+<a href="AppelsOffre.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #1F4FB5; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700; box-sizing: border-box">+ Nouvel appel d'offre</a>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5A6069; font-weight: 600">Consultants en mission</span><span style="font-size: 28px; font-weight: 800">6</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5A6069; font-weight: 600">Projets dans la base</span><span style="font-size: 28px; font-weight: 800">2</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5A6069; font-weight: 600">AO ouverts</span><span style="font-size: 28px; font-weight: 800">1</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5A6069; font-weight: 600">CV envoyés (12 mois)</span><span style="font-size: 28px; font-weight: 800">9</span></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<div style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">Projets chez ce client</h2>
+<button type="button" style="min-height: 40px; padding: 0 14px; border-radius: 8px; border: 1px solid #C9C6BE; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700; color: #1B1F24">+ Créer un projet</button>
+</div>
+<a href="Projet.dc.html" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 14px 16px; border: 1px solid #E3E1DB; border-radius: 10px; text-decoration: none; color: #1B1F24">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 800">Plateforme de paiement en ligne</span><span style="font-size: 13px; color: #5A6069">Java · Spring · Kafka · Kubernetes</span></span>
+<span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">En cours</span><span style="font-size: 13px; color: #5A6069">5 consultants</span></span>
+</a>
+<a href="Projet.dc.html" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 14px 16px; border: 1px solid #E3E1DB; border-radius: 10px; text-decoration: none; color: #1B1F24">
+<span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 800">Refonte de l'espace client mobile</span><span style="font-size: 13px; color: #5A6069">Kotlin · Swift · API REST</span></span>
+<span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">En cours</span><span style="font-size: 13px; color: #5A6069">1 consultant</span></span>
+</a>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">CV envoyés à ce client</h2>
+<a href="Partage.dc.html" style="font-size: 13px; font-weight: 700">Tous les liens</a>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: #5A6069; font-size: 12px">
+<th scope="col" style="padding: 10px 8px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Consultant · version</th>
+<th scope="col" style="padding: 10px 8px; border-bottom: 1px solid #E3E1DB; font-weight: 700">AO</th>
+<th scope="col" style="padding: 10px 8px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Envoyé</th>
+<th scope="col" style="padding: 10px 8px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Vues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4"><a href="Versions.dc.html" style="font-weight: 700; text-decoration: none">Camille Durand · PO Paiement</a></td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4">AO-2026-118</td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">14/10/2026</td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4; font-weight: 700">3</td>
+</tr>
+<tr>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4"><a href="Versions.dc.html" style="font-weight: 700; text-decoration: none">Hugo Lefebvre · Dév. paiement</a></td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4">AO-2026-118</td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">14/10/2026</td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4; font-weight: 700; color: #7A4F00">0</td>
+</tr>
+<tr>
+<td style="padding: 12px 8px"><a href="Versions.dc.html" style="font-weight: 700; text-decoration: none">Nadia Benali · Architecte</a></td>
+<td style="padding: 12px 8px">AO-2026-074</td>
+<td style="padding: 12px 8px; color: #3A3F47">03/06/2026</td>
+<td style="padding: 12px 8px; font-weight: 700">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+
+<aside style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">Présentation sur les CV</h2>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Règle<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>Anonymisé</option><option>Citable</option><option>Non citable</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Libellé anonymisé<input type="text" value="Banque régionale" style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; box-sizing: border-box"></label>
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #5A6069">S'applique à toutes les missions chez ce client, dans toutes les versions envoyées à d'autres clients.</p>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><h2 style="margin: 0; font-size: 18px; font-weight: 800">Contacts</h2><button type="button" aria-label="Ajouter un contact" style="width: 40px; height: 40px; border-radius: 8px; border: 1px solid #C9C6BE; background: #FFFFFF; font-family: inherit; font-size: 18px; font-weight: 700; color: #1B1F24">+</button></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; border-bottom: 1px solid #ECEAE4"><span style="font-size: 14px; font-weight: 700">[Nom du contact]</span><span style="font-size: 13px; color: #5A6069">Responsable des achats IT · destinataire des CV</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">[Nom du contact]</span><span style="font-size: 13px; color: #5A6069">Manager squad paiement</span></div>
+</section>
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">Compte</h2>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #5A6069">Responsable d'affaires</span><span style="font-weight: 600">Sophie Martin</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px"><span style="color: #5A6069">Format de CV imposé</span><span style="font-weight: 600">Oui · modèle Word</span></div>
+</section>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

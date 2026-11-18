@@ -1,0 +1,30 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-26T15:45:00Z"},
+  "title": "CVthèque XPEHO – maquettes",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1700, "title": "1 · Consultant — Mon CV (CV maître)", "expand": "fill"},
+    "Mission.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1300, "title": "2 · Consultant — Ajouter une mission", "expand": "fill"},
+    "Projet.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 1200, "title": "3 · Base projets — Fiche projet", "expand": "fill"},
+    "Versions.dc.html": {"x": 0, "y": 2100, "w": 1440, "h": 1450, "title": "4 · Commercial — Version de CV pour un AO", "expand": "fill"},
+    "Partage.dc.html": {"x": 1520, "y": 2100, "w": 1440, "h": 1050, "title": "5 · Commercial — Liens de partage", "expand": "fill"},
+    "Public.dc.html": {"x": 3040, "y": 2100, "w": 1440, "h": 1800, "title": "6 · Client — CV HTML consultable", "expand": "fill"},
+    "Formations.dc.html": {"x": 0, "y": 4400, "w": 1440, "h": 1150, "title": "7 · Consultant — Formations & certifications", "expand": "fill"},
+    "Projets.dc.html": {"x": 1520, "y": 4400, "w": 1440, "h": 1250, "title": "8 · Référentiel — Liste des projets", "expand": "fill"},
+    "Competences.dc.html": {"x": 3040, "y": 4400, "w": 1440, "h": 1250, "title": "9 · Consultant — Mes compétences", "expand": "fill"},
+    "Consultants.dc.html": {"x": 0, "y": 6250, "w": 1440, "h": 1350, "title": "10 · Commercial — Liste des consultants", "expand": "fill"},
+    "Clients.dc.html": {"x": 1520, "y": 6250, "w": 1440, "h": 1150, "title": "11 · Commercial — Liste des clients", "expand": "fill"},
+    "ClientFiche.dc.html": {"x": 3040, "y": 6250, "w": 1440, "h": 1300, "title": "12 · Commercial — Fiche client", "expand": "fill"},
+    "AppelsOffre.dc.html": {"x": 4560, "y": 6250, "w": 1440, "h": 1200, "title": "13 · Commercial — Appels d'offre & versions", "expand": "fill"}
+  },
+  "order": ["Main.dc.html", "Mission.dc.html", "Projet.dc.html", "Versions.dc.html", "Partage.dc.html", "Public.dc.html", "Formations.dc.html", "Projets.dc.html", "Competences.dc.html", "Consultants.dc.html", "Clients.dc.html", "ClientFiche.dc.html", "AppelsOffre.dc.html"],
+  "notes": {
+    "row1": {"x": 0, "y": -300, "text": "Espace consultant & référentiel projets", "kind": "title1", "maxW": 4480},
+    "row2": {"x": 0, "y": 1800, "text": "Espace commercial & partage client", "kind": "title1", "maxW": 4480},
+    "row3": {"x": 0, "y": 4100, "text": "Espace consultant — listes & référentiels", "kind": "title1", "maxW": 4480},
+    "row4": {"x": 0, "y": 5950, "text": "Espace commercial — consultants, clients, appels d'offre", "kind": "title1", "maxW": 6000}
+  },
+  "designSystems": []
+}
