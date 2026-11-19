@@ -12,6 +12,37 @@
 <style>
 body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
 a{color:#1F4FB5}a:hover{color:#163A87}
+
+.k-card{background:#FFF;border:1px solid #E3E1DB;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;min-width:0}
+.k-h2{margin:0;font-size:18px;font-weight:800}
+.k-h3{margin:0;font-size:14px;font-weight:800}
+.k-muted{font-size:12px;color:#5A6069;line-height:1.5}
+.k-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.k-between{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.k-col{display:flex;flex-direction:column;gap:6px}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3A3F47}
+.k-row>.k-field{flex:1 1 200px}
+.k-inp{min-height:44px;padding:0 12px;border:1px solid #C9C6BE;border-radius:8px;font-family:inherit;font-size:14px;color:#1B1F24;background:#FFF;box-sizing:border-box;display:flex;align-items:center}
+.k-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:10px;border:none;background:#1F4FB5;color:#FFF;font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.k-btn2{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid #C9C6BE;background:#FFF;color:#1B1F24;font-family:inherit;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box;white-space:nowrap}
+.k-danger{border-color:#E7B4B4;color:#9B1C1C}
+.k-pill{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700;background:#ECEAE4;color:#3A3F47;white-space:nowrap}
+.k-ok{background:#E6F4EC;color:#1D6B43}.k-warn{background:#FBF0D9;color:#7A4F00}.k-err{background:#FBE7E7;color:#9B1C1C}.k-info{background:#E8EEFB;color:#163A87}
+.k-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#F1F0EC;font-size:13px;font-weight:600}
+.k-new{outline:2px dashed #E08A2E;outline-offset:3px}
+.k-tbl{width:100%;border-collapse:collapse;font-size:14px}
+.k-tbl th{text-align:left;color:#5A6069;font-size:12px;font-weight:700;padding:10px 8px;border-bottom:1px solid #E3E1DB}
+.k-tbl td{padding:12px 8px;border-bottom:1px solid #ECEAE4;vertical-align:top}
+.k-note{padding:12px 14px;border-radius:10px;background:#F4F7FD;border:1px solid #C9D6F3;font-size:13px;color:#163A87;line-height:1.5}
+.k-alert{padding:12px 14px;border-radius:10px;background:#FFF7E8;border:1px solid #EBCB8B;font-size:13px;color:#5C3D00;line-height:1.5}
+.k-radio{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #E3E1DB;border-radius:10px;font-size:14px}
+.k-radio.on{border-color:#1F4FB5;background:#F4F7FD}
+.k-dot{width:16px;height:16px;border-radius:50%;border:2px solid #9AA0A8;flex:none;margin-top:2px;box-sizing:border-box}
+.on .k-dot{border:5px solid #1F4FB5}
+.k-check{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px;font-weight:600}
+.k-check input{width:18px;height:18px;accent-color:#1F4FB5}
+.k-kpi{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #E3E1DB;border-radius:12px;background:#FFF;flex:1 1 160px}
+.k-kpi b{font-size:26px;font-weight:800}
 </style>
 </helmet>
 <div style="min-height: 100vh; background: #F6F5F2; display: flex; flex-wrap: wrap; font-family: 'Manrope', system-ui, sans-serif; color: #1B1F24">
@@ -27,6 +58,7 @@ a{color:#1F4FB5}a:hover{color:#163A87}
 <div style="display: flex; flex-direction: column; gap: 4px">
 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 0 12px 6px">Commerce</span>
 <a href="Consultants.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Consultants</a>
+<a href="MissionsEnCours.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Missions en cours</a>
 <a href="AppelsOffre.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Appels d'offre &amp; versions</a>
 <a href="Partage.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Liens partagés</a>
 <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 18px 12px 6px">Référentiels</span>
@@ -52,7 +84,7 @@ a{color:#1F4FB5}a:hover{color:#163A87}
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <span style="padding: 4px 10px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">En cours</span>
 <span style="padding: 4px 10px; border-radius: 6px; background: #F0EFEB; font-size: 12px; font-weight: 700">Distribution spécialisée</span>
-<span style="padding: 4px 10px; border-radius: 6px; background: #F0EFEB; font-size: 12px; font-weight: 700">Depuis 09/2023</span>
+<span style="padding: 4px 10px; border-radius: 6px; background: #F0EFEB; font-size: 12px; font-weight: 700">09/2023 → fin prévue 06/2027</span>
 </div>
 </div>
 <button type="button" style="min-height: 44px; padding: 0 20px; border-radius: 10px; border: none; background: #1F4FB5; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700">Modifier la fiche</button>
@@ -87,8 +119,9 @@ a{color:#1F4FB5}a:hover{color:#163A87}
 <section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px">
 <h2 style="margin: 0; font-size: 18px; font-weight: 800">Consultants XPEHO sur le projet</h2>
-<span style="font-size: 13px; color: #5A6069">4 missions</span>
+<span class="k-row" style="gap:10px"><span style="font-size: 13px; color: #5A6069">4 missions</span><span class="k-btn" style="min-height:36px;font-size:13px">+ Affecter un consultant</span></span>
 </div>
+<span class="k-muted">Chaque affectation porte le rôle, le début, la fin prévue et la fin réelle. Une mission terminée alimente automatiquement l'expérience dans le CV maître du consultant, qui complète sa contribution.</span>
 <div style="overflow-x: auto">
 <table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px">
 <thead>
@@ -103,7 +136,7 @@ a{color:#1F4FB5}a:hover{color:#163A87}
 <tr>
 <td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4"><a href="Main.dc.html" style="font-weight: 700; text-decoration: none">Camille Durand</a></td>
 <td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4">Product Owner</td>
-<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">03/2024 → en cours</td>
+<td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">03/2024 → 03/2027 (prévue)</td>
 <td style="padding: 12px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">Complète</span></td>
 </tr>
 <tr>
@@ -145,7 +178,7 @@ a{color:#1F4FB5}a:hover{color:#163A87}
 <section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
 <h2 style="margin: 0; font-size: 18px; font-weight: 800">Utilisation</h2>
 <span style="font-size: 28px; font-weight: 800">9</span>
-<span style="font-size: 14px; color: #3A3F47">versions de CV citent ce projet. Une modification de cette fiche les met toutes à jour.</span>
+<span style="font-size: 14px; color: #3A3F47">versions de CV citent ce projet. Une modification de cette fiche met à jour les CV maîtres ; les versions restent figées et affichent « Le CV maître a évolué » avec une resynchronisation proposée.</span>
 </section>
 </aside>
 </div>

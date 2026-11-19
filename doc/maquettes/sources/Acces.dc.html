@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Accès au CV partagé</title>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
+a{color:#1F4FB5}a:hover{color:#163A87}
+
+.k-card{background:#FFF;border:1px solid #E3E1DB;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;min-width:0}
+.k-h2{margin:0;font-size:18px;font-weight:800}
+.k-h3{margin:0;font-size:14px;font-weight:800}
+.k-muted{font-size:12px;color:#5A6069;line-height:1.5}
+.k-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.k-between{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.k-col{display:flex;flex-direction:column;gap:6px}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3A3F47}
+.k-row>.k-field{flex:1 1 200px}
+.k-inp{min-height:44px;padding:0 12px;border:1px solid #C9C6BE;border-radius:8px;font-family:inherit;font-size:14px;color:#1B1F24;background:#FFF;box-sizing:border-box;display:flex;align-items:center}
+.k-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:10px;border:none;background:#1F4FB5;color:#FFF;font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.k-btn2{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid #C9C6BE;background:#FFF;color:#1B1F24;font-family:inherit;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box;white-space:nowrap}
+.k-danger{border-color:#E7B4B4;color:#9B1C1C}
+.k-pill{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700;background:#ECEAE4;color:#3A3F47;white-space:nowrap}
+.k-ok{background:#E6F4EC;color:#1D6B43}.k-warn{background:#FBF0D9;color:#7A4F00}.k-err{background:#FBE7E7;color:#9B1C1C}.k-info{background:#E8EEFB;color:#163A87}
+.k-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#F1F0EC;font-size:13px;font-weight:600}
+.k-new{outline:2px dashed #E08A2E;outline-offset:3px}
+.k-tbl{width:100%;border-collapse:collapse;font-size:14px}
+.k-tbl th{text-align:left;color:#5A6069;font-size:12px;font-weight:700;padding:10px 8px;border-bottom:1px solid #E3E1DB}
+.k-tbl td{padding:12px 8px;border-bottom:1px solid #ECEAE4;vertical-align:top}
+.k-note{padding:12px 14px;border-radius:10px;background:#F4F7FD;border:1px solid #C9D6F3;font-size:13px;color:#163A87;line-height:1.5}
+.k-alert{padding:12px 14px;border-radius:10px;background:#FFF7E8;border:1px solid #EBCB8B;font-size:13px;color:#5C3D00;line-height:1.5}
+.k-radio{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #E3E1DB;border-radius:10px;font-size:14px}
+.k-radio.on{border-color:#1F4FB5;background:#F4F7FD}
+.k-dot{width:16px;height:16px;border-radius:50%;border:2px solid #9AA0A8;flex:none;margin-top:2px;box-sizing:border-box}
+.on .k-dot{border:5px solid #1F4FB5}
+.k-check{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px;font-weight:600}
+.k-check input{width:18px;height:18px;accent-color:#1F4FB5}
+.k-kpi{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #E3E1DB;border-radius:12px;background:#FFF;flex:1 1 160px}
+.k-kpi b{font-size:26px;font-weight:800}
+
+</style>
+</helmet>
+<div style="min-height:100vh;background:#F6F5F2;display:flex;flex-direction:column">
+<header style="background: #14213D; color: #FFFFFF; padding: 14px 24px"><div style="max-width:1040px;margin:0 auto"><span style="font-weight: 800; font-size: 16px; letter-spacing: 0.06em">XPEHO</span></div></header>
+<main style="flex:1;padding:48px 24px 64px;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:flex-start">
+<section class="k-card" style="flex:0 1 420px">
+<span class="k-pill k-info" style="align-self:flex-start">Étape 1 / 2</span>
+<h1 style="margin:0;font-size:24px;font-weight:800">Consulter un CV partagé par XPEHO</h1>
+<span class="k-muted" style="font-size:14px">Ce lien est réservé aux adresses <b>@banque-ouest.fr</b>. Saisissez votre adresse professionnelle pour recevoir un code d'accès.</span>
+<div class="k-field">Adresse e-mail professionnelle<span class="k-inp">m.leroux@banque-ouest.fr</span></div>
+<span class="k-btn" style="min-height:44px">Recevoir un code</span>
+<span class="k-muted">Une adresse d'un autre domaine ? Votre demande sera transmise à votre contact XPEHO, qui pourra l'accepter.</span>
+</section>
+<section class="k-card" style="flex:0 1 420px">
+<span class="k-pill k-info" style="align-self:flex-start">Étape 2 / 2</span>
+<h2 style="margin:0;font-size:24px;font-weight:800">Saisissez le code reçu</h2>
+<span class="k-muted" style="font-size:14px">Code envoyé à m.leroux@banque-ouest.fr. Il est valable 10 minutes et ne sert qu'une fois.</span>
+<div class="k-row" style="gap:8px"><span class="k-inp" style="width:48px;justify-content:center;font-size:20px;font-weight:800">4</span><span class="k-inp" style="width:48px;justify-content:center;font-size:20px;font-weight:800">8</span><span class="k-inp" style="width:48px;justify-content:center;font-size:20px;font-weight:800">1</span><span class="k-inp" style="width:48px;justify-content:center;font-size:20px;font-weight:800">9</span><span class="k-inp" style="width:48px;justify-content:center;font-size:20px;font-weight:800">0</span><span class="k-inp" style="width:48px;justify-content:center;font-size:20px;font-weight:800">_</span></div>
+<label class="k-check"><input type="checkbox" checked>Se souvenir de cet appareil pendant 7 jours</label>
+<a href="Public.dc.html" class="k-btn" style="min-height:44px">Accéder au CV</a>
+<span class="k-muted">Pas reçu ? <a href="#">Renvoyer un code</a> · 5 tentatives maximum.</span>
+</section>
+<section class="k-card" style="flex:0 1 420px">
+<span class="k-pill k-warn" style="align-self:flex-start">Mode mot de passe</span>
+<h2 style="margin:0;font-size:20px;font-weight:800">Lien protégé par mot de passe</h2>
+<span class="k-muted" style="font-size:14px">Le mot de passe vous a été communiqué par un autre canal.</span>
+<div class="k-field">Votre adresse e-mail<span class="k-inp" style="color:#8A9099">[email]</span></div>
+<div class="k-field">Mot de passe<span class="k-inp">••••••••••</span></div>
+<span class="k-btn" style="min-height:44px">Accéder au CV</span>
+</section>
+<section class="k-card" style="flex:0 1 420px">
+<span class="k-pill k-err" style="align-self:flex-start">Lien expiré ou révoqué</span>
+<h2 style="margin:0;font-size:20px;font-weight:800">Ce lien n'est plus valide</h2>
+<span class="k-muted" style="font-size:14px">Contactez votre interlocuteur XPEHO pour obtenir un nouvel accès.</span>
+<span class="k-btn2" style="align-self:flex-start">Demander un nouvel accès</span>
+</section>
+</main>
+<p style="margin:0 auto 32px;max-width:860px;text-align:center;font-size:12px;color:#5A6069;line-height:1.5">Document confidentiel contenant des données personnelles. Chaque consultation est enregistrée (adresse e-mail, date, téléchargement). Page non indexée par les moteurs de recherche.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
