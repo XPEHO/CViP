@@ -119,7 +119,7 @@
       "y": 8100,
       "w": 1440,
       "h": 900,
-      "title": "14 · Client — Accès au CV (code e-mail, mot de passe)",
+      "title": "14 · Client — Accès au CV (lien personnel, mot de passe)",
       "expand": "fill"
     },
     "MissionsEnCours.dc.html": {
@@ -135,7 +135,7 @@
       "y": 8100,
       "w": 1440,
       "h": 900,
-      "title": "16 · Tous — Connexion SSO",
+      "title": "16 · Tous — Connexion",
       "expand": "fill"
     },
     "Equipe.dc.html": {
