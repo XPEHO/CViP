@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Référentiel des projets</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
+a{color:#1F4FB5}a:hover{color:#163A87}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F5F2; display: flex; flex-wrap: wrap; font-family: 'Manrope', system-ui, sans-serif; color: #1B1F24">
+
+<nav aria-label="Navigation principale" style="flex: 1 1 220px; background: #FFFFFF; border-right: 1px solid #E3E1DB; padding: 24px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+<div style="width: 36px; height: 36px; border-radius: 8px; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px">CV</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-weight: 800; font-size: 16px">CVthèque</span>
+<span style="font-size: 12px; color: #5A6069">XPEHO</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 0 12px 6px">Mon espace</span>
+<a href="Main.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Mon CV</a>
+<a href="Mission.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Mes missions</a>
+<a href="Formations.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Formations &amp; certifications</a>
+<a href="Main.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Versions de mon CV</a>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 18px 12px 6px">Référentiels</span>
+<a href="#" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; color: #1F4FB5; background: #E8EEFB">Projets</a>
+<a href="Competences.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Compétences &amp; technos</a>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; background: #F6F5F2">
+<div style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5F8; color: #1F4FB5; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">CD</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 13px; font-weight: 700">Camille Durand</span>
+<span style="font-size: 12px; color: #5A6069">Rôle : Consultant</span>
+</div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #5A6069; font-weight: 600">Référentiel</span>
+<h1 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.01em">Projets</h1>
+<span style="font-size: 14px; color: #5A6069">48 projets · une fiche par projet, reprise à l'identique dans tous les CV</span>
+</div>
+<button type="button" style="min-height: 44px; padding: 0 20px; border-radius: 10px; border: 1px solid #1F4FB5; background: #FFFFFF; color: #1F4FB5; font-family: inherit; font-size: 14px; font-weight: 700">Proposer un projet</button>
+</div>
+
+<section aria-label="Recherche et filtres" style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end">
+<label style="flex: 2 1 280px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Rechercher<input type="search" value="" placeholder="Nom du projet, client, objectif" style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; box-sizing: border-box"></label>
+<label style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Client<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>Tous</option><option>Groupe Distribution Nord</option></select></label>
+<label style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Techno<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>Toutes</option><option>Kafka</option><option>Mirakl</option></select></label>
+<label style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Statut<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>Tous</option><option>En cours</option><option>Terminé</option><option>À valider</option></select></label>
+<label style="display: flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #1F4FB5">Mes projets uniquement</label>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 8px 24px 16px">
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 820px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: #5A6069; font-size: 12px">
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Projet</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Client</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Produits &amp; technos</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Période</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Consultants</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #FBF8EF">
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 800">Application de fidélité magasin</span><span style="font-size: 12px; color: #5A6069">Proposé par Inès Morel le 22/10/2026</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">Enseigne Sport</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">Flutter · Firebase</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">2026 →</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">1</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #FBF1DC; color: #7A4F00; font-size: 12px; font-weight: 700">À valider</span></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><a href="Projet.dc.html" style="font-weight: 800; text-decoration: none">Refonte du parcours de commande omnicanal</a></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">Groupe Distribution Nord</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">Salesforce Commerce Cloud · Kafka · +3</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">2023 →</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">4 <span style="font-size: 12px; color: #1F4FB5; font-weight: 700">dont vous</span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">En cours</span></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><a href="Projet.dc.html" style="font-weight: 800; text-decoration: none">Lancement d'une marketplace B2B</a></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">Industriel Équipements Pro</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">Mirakl · Adobe Commerce · Akeneo</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">2022 → 2024</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">3 <span style="font-size: 12px; color: #1F4FB5; font-weight: 700">dont vous</span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #ECEAE4; color: #3A3F47; font-size: 12px; font-weight: 700">Terminé</span></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><a href="Projet.dc.html" style="font-weight: 800; text-decoration: none">Plateforme de paiement en ligne</a></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">Banque Ouest</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">Java · Spring · Kafka · Kubernetes</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">2024 →</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">5</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">En cours</span></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><a href="Projet.dc.html" style="font-weight: 800; text-decoration: none">Migration du PIM groupe</a></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">Enseigne Maison &amp; Jardin</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">Akeneo · Talend · SQL</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">2020 → 2021</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">2 <span style="font-size: 12px; color: #1F4FB5; font-weight: 700">dont vous</span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #ECEAE4; color: #3A3F47; font-size: 12px; font-weight: 700">Terminé</span></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><a href="Projet.dc.html" style="font-weight: 800; text-decoration: none">Supply chain : prévision des ventes</a></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">Enseigne Sport</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">Python · Databricks · Power BI</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; color: #3A3F47">2025 →</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">5</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">En cours</span></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px"><a href="Projet.dc.html" style="font-weight: 800; text-decoration: none">Prise de commande en magasin (tablette vendeur)</a></td>
+<td style="padding: 14px 8px">Enseigne Maison &amp; Jardin</td>
+<td style="padding: 14px 8px; color: #3A3F47">React Native · API REST</td>
+<td style="padding: 14px 8px; color: #3A3F47">2021 → 2022</td>
+<td style="padding: 14px 8px">2</td>
+<td style="padding: 14px 8px"><span style="padding: 3px 8px; border-radius: 6px; background: #ECEAE4; color: #3A3F47; font-size: 12px; font-weight: 700">Terminé</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px">
+<span style="font-size: 13px; color: #5A6069">7 projets affichés sur 48</span>
+<div style="display: flex; gap: 8px">
+<button type="button" style="min-height: 40px; padding: 0 14px; border-radius: 8px; border: 1px solid #C9C6BE; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700; color: #1B1F24">Précédent</button>
+<button type="button" style="min-height: 40px; padding: 0 14px; border-radius: 8px; border: 1px solid #C9C6BE; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700; color: #1B1F24">Suivant</button>
+</div>
+</div>
+</section>
+
+<p style="margin: 0; font-size: 13px; color: #5A6069">Les projets proposés par les consultants restent « À valider » tant qu'un commercial n'a pas vérifié le client, l'objectif et les technos.</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1250}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Compléter ma mission</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
+a{color:#1F4FB5}a:hover{color:#163A87}
+
+.k-card{background:#FFF;border:1px solid #E3E1DB;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;min-width:0}
+.k-h2{margin:0;font-size:18px;font-weight:800}
+.k-h3{margin:0;font-size:14px;font-weight:800}
+.k-muted{font-size:12px;color:#5A6069;line-height:1.5}
+.k-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.k-between{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.k-col{display:flex;flex-direction:column;gap:6px}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3A3F47}
+.k-row>.k-field{flex:1 1 200px}
+.k-inp{min-height:44px;padding:0 12px;border:1px solid #C9C6BE;border-radius:8px;font-family:inherit;font-size:14px;color:#1B1F24;background:#FFF;box-sizing:border-box;display:flex;align-items:center}
+.k-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:10px;border:none;background:#1F4FB5;color:#FFF;font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.k-btn2{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid #C9C6BE;background:#FFF;color:#1B1F24;font-family:inherit;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box;white-space:nowrap}
+.k-danger{border-color:#E7B4B4;color:#9B1C1C}
+.k-pill{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700;background:#ECEAE4;color:#3A3F47;white-space:nowrap}
+.k-ok{background:#E6F4EC;color:#1D6B43}.k-warn{background:#FBF0D9;color:#7A4F00}.k-err{background:#FBE7E7;color:#9B1C1C}.k-info{background:#E8EEFB;color:#163A87}
+.k-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#F1F0EC;font-size:13px;font-weight:600}
+.k-new{outline:2px dashed #E08A2E;outline-offset:3px}
+.k-tbl{width:100%;border-collapse:collapse;font-size:14px}
+.k-tbl th{text-align:left;color:#5A6069;font-size:12px;font-weight:700;padding:10px 8px;border-bottom:1px solid #E3E1DB}
+.k-tbl td{padding:12px 8px;border-bottom:1px solid #ECEAE4;vertical-align:top}
+.k-note{padding:12px 14px;border-radius:10px;background:#F4F7FD;border:1px solid #C9D6F3;font-size:13px;color:#163A87;line-height:1.5}
+.k-alert{padding:12px 14px;border-radius:10px;background:#FFF7E8;border:1px solid #EBCB8B;font-size:13px;color:#5C3D00;line-height:1.5}
+.k-radio{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #E3E1DB;border-radius:10px;font-size:14px}
+.k-radio.on{border-color:#1F4FB5;background:#F4F7FD}
+.k-dot{width:16px;height:16px;border-radius:50%;border:2px solid #9AA0A8;flex:none;margin-top:2px;box-sizing:border-box}
+.on .k-dot{border:5px solid #1F4FB5}
+.k-check{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px;font-weight:600}
+.k-check input{width:18px;height:18px;accent-color:#1F4FB5}
+.k-kpi{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #E3E1DB;border-radius:12px;background:#FFF;flex:1 1 160px}
+.k-kpi b{font-size:26px;font-weight:800}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F5F2; display: flex; flex-wrap: wrap; font-family: 'Manrope', system-ui, sans-serif; color: #1B1F24">
+
+<nav aria-label="Navigation principale" style="flex: 1 1 220px; background: #FFFFFF; border-right: 1px solid #E3E1DB; padding: 24px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+<div style="width: 36px; height: 36px; border-radius: 8px; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px">CV</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-weight: 800; font-size: 16px">CVthèque</span>
+<span style="font-size: 12px; color: #5A6069">XPEHO</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 0 12px 6px">Mon espace</span>
+<a href="Main.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Mon CV</a>
+<a href="#" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; color: #1F4FB5; background: #E8EEFB">Mes missions</a>
+<a href="Formations.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Formations &amp; certifications</a>
+<a href="#" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Versions de mon CV</a>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 18px 12px 6px">Référentiels</span>
+<a href="Projets.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Projets</a>
+<a href="Competences.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Compétences &amp; technos</a>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; background: #F6F5F2">
+<div style="width: 32px; height: 32px; border-radius: 50%; background: #DCE5F8; color: #1F4FB5; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">CD</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 13px; font-weight: 700">Camille Durand</span>
+<span style="font-size: 12px; color: #5A6069">Rôle : Consultant</span>
+</div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 6px; max-width: 980px">
+<a href="Main.dc.html" style="font-size: 13px; font-weight: 600; text-decoration: none">← Retour à mon CV</a>
+<h1 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.01em">Compléter ma mission</h1>
+<span style="font-size: 14px; color: #5A6069">Les missions sont créées par les commerciaux (projet, rôle, dates). Vous complétez votre contribution ; à la fin de la mission, l'expérience est ajoutée automatiquement à votre CV maître.</span>
+</div>
+
+<section style="max-width: 980px; background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800">1</span>
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">La mission</h2>
+</div>
+<div class="k-between" style="padding: 14px; border-radius: 10px; border: 2px solid #1F4FB5; background: #F4F7FD">
+<div class="k-col" style="gap:2px"><span style="font-size: 15px; font-weight: 800">Refonte du parcours de commande omnicanal</span><span style="font-size: 13px; color: #3A3F47">Groupe Distribution Nord · affectation créée par Sophie Martin le 12/02/2024</span></div>
+<span class="k-pill k-ok">Mission en cours</span>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5A6069">Une mission manque ou une information est fausse ? <a href="#" style="font-weight: 700">Signaler à mon commercial</a></p>
+
+<div style="border-radius: 10px; background: #F6F5F2; border: 1px solid #E3E1DB; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3F47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+Informations du projet — identiques sur tous les CV</span>
+<a href="Projet.dc.html" style="font-size: 13px; font-weight: 700">Voir la fiche projet</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; color: #5A6069">Client</span><span style="font-size: 14px; font-weight: 600">Groupe Distribution Nord</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; color: #5A6069">Secteur</span><span style="font-size: 14px; font-weight: 600">Distribution spécialisée</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; font-weight: 700; color: #5A6069">Objectif du projet</span><span style="font-size: 14px; line-height: 1.55">Unifier le panier et le paiement entre site, application et magasins pour permettre la commande en ligne avec retrait ou livraison depuis n'importe quel canal.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; font-weight: 700; color: #5A6069">Produits &amp; technologies</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E3E1DB; font-size: 12px; font-weight: 600">Salesforce Commerce Cloud</span>
+<span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E3E1DB; font-size: 12px; font-weight: 600">Kafka</span>
+<span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E3E1DB; font-size: 12px; font-weight: 600">API REST</span>
+<span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E3E1DB; font-size: 12px; font-weight: 600">Jira</span>
+<span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E3E1DB; font-size: 12px; font-weight: 600">Contentsquare</span>
+</div>
+</div>
+<p style="margin: 0; font-size: 12px; color: #5A6069">Ces champs sont gérés dans la fiche projet par les commerciaux. Une correction s'applique au CV maître ; les versions déjà créées restent figées et signalent l'écart au commercial, qui peut les resynchroniser.</p>
+</div>
+</section>
+
+<section style="max-width: 980px; background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800">2</span>
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">Ma contribution</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div class="k-field">Rôle<span class="k-inp" style="background:#F6F5F2">Product Owner</span></div>
+<div class="k-field">Début<span class="k-inp" style="background:#F6F5F2">03/2024</span></div>
+<div class="k-field">Fin prévue<span class="k-inp" style="background:#F6F5F2">03/2027</span></div>
+<div class="k-field">Fin réelle<span class="k-inp" style="background:#F6F5F2;color:#8A9099">—</span></div>
+</div>
+<span class="k-muted">Rôle et dates sont saisis par le commercial sur l'affectation. La fin réelle déclenche l'ajout de l'expérience au CV maître.</span>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Contexte de l'équipe<input type="text" value="2 squads de 8 personnes, en mode Scrum" style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Ma contribution et mes réalisations<textarea rows="5" style="padding: 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; line-height: 1.55; color: #1B1F24; resize: vertical">- Pilotage du backlog panier et paiement
+- Animation de deux squads et des rituels Scrum
+- Mise en place des indicateurs de conversion avec l'équipe data</textarea></label>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3F47">Compétences mobilisées (référentiel)</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center">
+<span style="padding: 5px 10px; border-radius: 999px; background: #E8EEFB; color: #163A87; font-size: 13px; font-weight: 600">Gestion de backlog</span>
+<span style="padding: 5px 10px; border-radius: 999px; background: #E8EEFB; color: #163A87; font-size: 13px; font-weight: 600">Parcours de commande</span>
+<span style="padding: 5px 10px; border-radius: 999px; background: #E8EEFB; color: #163A87; font-size: 13px; font-weight: 600">Scrum</span>
+<button type="button" style="min-height: 32px; padding: 0 12px; border-radius: 999px; border: 1px dashed #A9A59B; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700; color: #3A3F47">+ Ajouter</button>
+</div>
+</div>
+</section>
+
+<div style="max-width: 980px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #C9C6BE; background: #FFFFFF; color: #1B1F24; text-decoration: none; font-size: 14px; font-weight: 700; box-sizing: border-box">Annuler</a>
+<button type="button" style="min-height: 44px; padding: 0 20px; border-radius: 10px; border: none; background: #1F4FB5; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700">Enregistrer ma contribution</button>
+</div>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

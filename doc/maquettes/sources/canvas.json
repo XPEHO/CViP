@@ -1,0 +1,241 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-26T15:45:00Z"
+  },
+  "title": "CVthèque XPEHO – maquettes (révisées selon le cahier des charges)",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 2174,
+      "title": "1 · Consultant — Mon CV (CV maître)",
+      "expand": "fill"
+    },
+    "Mission.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 1374,
+      "title": "2 · Consultant — Compléter ma mission",
+      "expand": "fill"
+    },
+    "Projet.dc.html": {
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 923,
+      "title": "3 · Base projets — Fiche projet",
+      "expand": "fill"
+    },
+    "Versions.dc.html": {
+      "x": 0,
+      "y": 2100,
+      "w": 1440,
+      "h": 1885,
+      "title": "4 · Commercial — Version de CV pour un AO",
+      "expand": "fill"
+    },
+    "Partage.dc.html": {
+      "x": 1520,
+      "y": 2100,
+      "w": 1440,
+      "h": 1416,
+      "title": "5 · Commercial — Liens de partage",
+      "expand": "fill"
+    },
+    "Public.dc.html": {
+      "x": 3040,
+      "y": 2100,
+      "w": 1440,
+      "h": 1654,
+      "title": "6 · Client — CV HTML consultable",
+      "expand": "fill"
+    },
+    "Formations.dc.html": {
+      "x": 0,
+      "y": 4400,
+      "w": 1440,
+      "h": 900,
+      "title": "7 · Consultant — Formations & certifications",
+      "expand": "fill"
+    },
+    "Projets.dc.html": {
+      "x": 1520,
+      "y": 4400,
+      "w": 1440,
+      "h": 907,
+      "title": "8 · Référentiel — Liste des projets",
+      "expand": "fill"
+    },
+    "Competences.dc.html": {
+      "x": 3040,
+      "y": 4400,
+      "w": 1440,
+      "h": 954,
+      "title": "9 · Consultant — Mes compétences",
+      "expand": "fill"
+    },
+    "Consultants.dc.html": {
+      "x": 0,
+      "y": 6250,
+      "w": 1440,
+      "h": 953,
+      "title": "10 · Commercial — Liste des consultants",
+      "expand": "fill"
+    },
+    "Clients.dc.html": {
+      "x": 1520,
+      "y": 6250,
+      "w": 1440,
+      "h": 900,
+      "title": "11 · Commercial — Liste des clients",
+      "expand": "fill"
+    },
+    "ClientFiche.dc.html": {
+      "x": 3040,
+      "y": 6250,
+      "w": 1440,
+      "h": 1182,
+      "title": "12 · Commercial — Fiche client",
+      "expand": "fill"
+    },
+    "AppelsOffre.dc.html": {
+      "x": 4560,
+      "y": 6250,
+      "w": 1440,
+      "h": 1519,
+      "title": "13 · Commercial — Appels d'offre : exigences et rapprochement",
+      "expand": "fill"
+    },
+    "Acces.dc.html": {
+      "x": 0,
+      "y": 8100,
+      "w": 1440,
+      "h": 900,
+      "title": "14 · Client — Accès au CV (code e-mail, mot de passe)",
+      "expand": "fill"
+    },
+    "MissionsEnCours.dc.html": {
+      "x": 1520,
+      "y": 8100,
+      "w": 1440,
+      "h": 980,
+      "title": "15 · Commercial — Missions en cours et intercontrats",
+      "expand": "fill"
+    },
+    "Connexion.dc.html": {
+      "x": 3040,
+      "y": 8100,
+      "w": 1440,
+      "h": 900,
+      "title": "16 · Tous — Connexion SSO",
+      "expand": "fill"
+    },
+    "Equipe.dc.html": {
+      "x": 0,
+      "y": 9600,
+      "w": 1440,
+      "h": 900,
+      "title": "17 · Manager — Mon équipe",
+      "expand": "fill"
+    },
+    "Admin.dc.html": {
+      "x": 1520,
+      "y": 9600,
+      "w": 1440,
+      "h": 1133,
+      "title": "18 · RH / Admin — Comptes & rôles",
+      "expand": "fill"
+    },
+    "Referentiels.dc.html": {
+      "x": 3040,
+      "y": 9600,
+      "w": 1440,
+      "h": 900,
+      "title": "19 · RH / Admin — Référentiels & modèles de CV",
+      "expand": "fill"
+    },
+    "Audit.dc.html": {
+      "x": 4560,
+      "y": 9600,
+      "w": 1440,
+      "h": 900,
+      "title": "20 · Admin — Journal d'audit",
+      "expand": "fill"
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Mission.dc.html",
+    "Projet.dc.html",
+    "Versions.dc.html",
+    "Partage.dc.html",
+    "Public.dc.html",
+    "Formations.dc.html",
+    "Projets.dc.html",
+    "Competences.dc.html",
+    "Consultants.dc.html",
+    "Clients.dc.html",
+    "ClientFiche.dc.html",
+    "AppelsOffre.dc.html",
+    "Acces.dc.html",
+    "MissionsEnCours.dc.html",
+    "Connexion.dc.html",
+    "Equipe.dc.html",
+    "Admin.dc.html",
+    "Referentiels.dc.html",
+    "Audit.dc.html"
+  ],
+  "notes": {
+    "row1": {
+      "x": 0,
+      "y": -300,
+      "text": "Espace consultant & référentiel projets",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "row2": {
+      "x": 0,
+      "y": 1800,
+      "text": "Espace commercial & partage client",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "row3": {
+      "x": 0,
+      "y": 4100,
+      "text": "Espace consultant — listes & référentiels",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "row4": {
+      "x": 0,
+      "y": 5950,
+      "text": "Espace commercial — consultants, clients, appels d'offre",
+      "kind": "title1",
+      "maxW": 6000
+    },
+    "row5": {
+      "x": 0,
+      "y": 7800,
+      "text": "Accès client, missions, connexion",
+      "kind": "title1",
+      "maxW": 6000
+    },
+    "row6": {
+      "x": 0,
+      "y": 9300,
+      "text": "Manager, RH et administration",
+      "kind": "title1",
+      "maxW": 6000
+    }
+  },
+  "designSystems": []
+}

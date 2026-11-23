@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Liens de partage</title>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
+a{color:#1F4FB5}a:hover{color:#163A87}
+
+.k-card{background:#FFF;border:1px solid #E3E1DB;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;min-width:0}
+.k-h2{margin:0;font-size:18px;font-weight:800}
+.k-h3{margin:0;font-size:14px;font-weight:800}
+.k-muted{font-size:12px;color:#5A6069;line-height:1.5}
+.k-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.k-between{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.k-col{display:flex;flex-direction:column;gap:6px}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3A3F47}
+.k-row>.k-field{flex:1 1 200px}
+.k-inp{min-height:44px;padding:0 12px;border:1px solid #C9C6BE;border-radius:8px;font-family:inherit;font-size:14px;color:#1B1F24;background:#FFF;box-sizing:border-box;display:flex;align-items:center}
+.k-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:10px;border:none;background:#1F4FB5;color:#FFF;font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.k-btn2{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid #C9C6BE;background:#FFF;color:#1B1F24;font-family:inherit;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box;white-space:nowrap}
+.k-danger{border-color:#E7B4B4;color:#9B1C1C}
+.k-pill{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700;background:#ECEAE4;color:#3A3F47;white-space:nowrap}
+.k-ok{background:#E6F4EC;color:#1D6B43}.k-warn{background:#FBF0D9;color:#7A4F00}.k-err{background:#FBE7E7;color:#9B1C1C}.k-info{background:#E8EEFB;color:#163A87}
+.k-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#F1F0EC;font-size:13px;font-weight:600}
+.k-new{outline:2px dashed #E08A2E;outline-offset:3px}
+.k-tbl{width:100%;border-collapse:collapse;font-size:14px}
+.k-tbl th{text-align:left;color:#5A6069;font-size:12px;font-weight:700;padding:10px 8px;border-bottom:1px solid #E3E1DB}
+.k-tbl td{padding:12px 8px;border-bottom:1px solid #ECEAE4;vertical-align:top}
+.k-note{padding:12px 14px;border-radius:10px;background:#F4F7FD;border:1px solid #C9D6F3;font-size:13px;color:#163A87;line-height:1.5}
+.k-alert{padding:12px 14px;border-radius:10px;background:#FFF7E8;border:1px solid #EBCB8B;font-size:13px;color:#5C3D00;line-height:1.5}
+.k-radio{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #E3E1DB;border-radius:10px;font-size:14px}
+.k-radio.on{border-color:#1F4FB5;background:#F4F7FD}
+.k-dot{width:16px;height:16px;border-radius:50%;border:2px solid #9AA0A8;flex:none;margin-top:2px;box-sizing:border-box}
+.on .k-dot{border:5px solid #1F4FB5}
+.k-check{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px;font-weight:600}
+.k-check input{width:18px;height:18px;accent-color:#1F4FB5}
+.k-kpi{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #E3E1DB;border-radius:12px;background:#FFF;flex:1 1 160px}
+.k-kpi b{font-size:26px;font-weight:800}
+
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F5F2; display: flex; flex-wrap: wrap; font-family: 'Manrope', system-ui, sans-serif; color: #1B1F24">
+<nav aria-label="Navigation principale" style="flex: 1 1 220px; background: #FFFFFF; border-right: 1px solid #E3E1DB; padding: 24px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 8px"><div style="width: 36px; height: 36px; border-radius: 8px; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px">CV</div><div style="display: flex; flex-direction: column"><span style="font-weight: 800; font-size: 16px">CVthèque</span><span style="font-size: 12px; color: #5A6069">XPEHO</span></div></div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 0 12px 6px">Commerce</span>
+<a href="Consultants.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Consultants</a>
+<a href="MissionsEnCours.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Missions en cours</a>
+<a href="AppelsOffre.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Appels d'offre &amp; versions</a>
+<a href="#" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; color: #1F4FB5; background: #E8EEFB">Liens partagés</a>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 18px 12px 6px">Référentiels</span>
+<a href="Clients.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Clients</a>
+<a href="Projets.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Projets</a>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; background: #F6F5F2"><div style="width: 32px; height: 32px; border-radius: 50%; background: #F3E3D3; color: #7A3E12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">SM</div><div style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700">Sophie Martin</span><span style="font-size: 12px; color: #5A6069">Rôle : Commercial</span></div></div>
+</nav>
+<main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+<div class="k-between" style="align-items:flex-end"><div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #5A6069; font-weight: 600">Commerce</span>
+<h1 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.01em">Liens de partage</h1>
+<span style="font-size: 14px; color: #5A6069">Chaque lien pointe vers une version figée du CV, rattachée à un client. Chaque consultation est tracée nominativement.</span>
+</div><div class="k-row"></div></div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<section class="k-card" style="flex: 1 1 340px">
+<h2 class="k-h2">Nouveau lien</h2>
+<label class="k-field">Version du CV<span class="k-inp">Camille Durand — AO PO Paiement — Banque Ouest ▾</span></label>
+<label class="k-field">Client<span class="k-inp">Banque Ouest · domaine @banque-ouest.fr ▾</span></label>
+<div class="k-col"><span style="font-size: 13px; font-weight: 700; color: #3A3F47">Mode d'accès</span>
+<div class="k-radio on"><span class="k-dot"></span><span class="k-col" style="gap:2px"><b>Domaine du client</b> <span class="k-pill k-info" style="align-self:flex-start">Par défaut</span><span class="k-muted">Toute adresse <b>@banque-ouest.fr</b> reçoit un code à usage unique par e-mail. Indisponible pour les messageries grand public (gmail, outlook…).</span></span></div>
+<div class="k-radio"><span class="k-dot"></span><span class="k-col" style="gap:2px"><b>Nominatif</b><span class="k-muted">Accès réservé à une liste d'adresses, toujours par code e-mail.</span></span></div>
+<div class="k-radio"><span class="k-dot"></span><span class="k-col" style="gap:2px"><b>Mot de passe (secours)</b><span class="k-muted">Pour les destinataires inconnus (plateformes d'achat). Le mot de passe est transmis par un autre canal.</span></span></div>
+</div>
+<label class="k-field">Premier destinataire (facultatif)<span class="k-inp" style="color:#8A9099">[prenom.nom]@banque-ouest.fr</span></label>
+<div class="k-row"><label class="k-field">Expire le<span class="k-inp">18/12/2026</span><span class="k-muted" style="font-weight:500">30 jours par défaut</span></label></div>
+<label class="k-check"><input type="checkbox" checked>Autoriser le téléchargement PDF (filigrane : e-mail du lecteur + date)</label>
+<label class="k-check"><input type="checkbox" checked>Autoriser le transfert aux collègues du même domaine</label>
+<button type="button" class="k-btn">Générer le lien</button>
+<div class="k-note">
+<b>Lien généré</b><br>
+<code style="font-size:14px;font-weight:600;color:#1B1F24">cv.[domaine-xpeho]/c/k7Qm2Rx9fT3vLw8a</code> <span class="k-btn2" style="margin-left:6px">Copier</span><br>
+<span>Jeton aléatoire de 128 bits, page non indexée. Code valable 10 minutes, accès conservé 7 jours sur le même appareil. Le consultant est informé du partage.</span>
+</div>
+</section>
+
+<div style="flex: 3 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+
+<section class="k-card">
+<div class="k-between"><h2 class="k-h2">À traiter</h2><span class="k-pill k-warn">2</span></div>
+<div class="k-between" style="padding:12px;border:1px solid #EBCB8B;border-radius:10px;background:#FFF7E8">
+<span class="k-col" style="gap:2px"><b style="font-size:14px">Demande d'accès hors domaine</b><span class="k-muted">j.dupont@cabinet-achats.fr, transféré par m.leroux@banque-ouest.fr · C. Durand — PO Paiement · il y a 2 h</span></span>
+<span class="k-row" style="gap:8px"><span class="k-btn2 k-danger">Refuser</span><span class="k-btn" style="min-height:36px">Accorder l'accès</span></span>
+</div>
+<div class="k-between" style="padding:12px;border:1px solid #E3E1DB;border-radius:10px">
+<span class="k-col" style="gap:2px"><b style="font-size:14px">Nouveau lecteur</b><span class="k-muted">a.garnier@banque-ouest.fr a ouvert C. Durand — PO Paiement (transfert interne) · hier, 17:42</span></span>
+<span class="k-btn2">Voir</span>
+</div>
+<span class="k-muted">Notifications envoyées par e-mail : première consultation, nouveau lecteur, demande d'accès hors domaine.</span>
+</section>
+
+<section class="k-card">
+<div class="k-between">
+<h2 class="k-h2">Liens envoyés</h2>
+<label class="k-row" style="gap:8px;font-size:13px;font-weight:600;color:#3A3F47">Filtrer<span class="k-inp" style="min-height:40px">Tous les liens actifs ▾</span></label>
+</div>
+<div style="overflow-x:auto"><table class="k-tbl" style="min-width:640px">
+<thead><tr><th>Version</th><th>Client · mode</th><th>Expire</th><th>Lecteurs</th><th>Statut</th><th></th></tr></thead>
+<tbody>
+<tr style="background:#F8FAFE">
+<td><span class="k-col" style="gap:2px"><b>C. Durand — PO Paiement</b><span class="k-muted">Envoyé le 14/10/2026</span></span></td>
+<td><span class="k-col" style="gap:2px">Banque Ouest<span class="k-muted">Domaine @banque-ouest.fr</span></span></td>
+<td>30/11/2026</td>
+<td><b>3 lecteurs</b><br><span class="k-muted">6 consultations · 1 téléchargement</span></td>
+<td><span class="k-pill k-ok">Actif</span></td>
+<td style="text-align:right"><span class="k-btn2 k-danger">Révoquer le lien</span></td>
+</tr>
+<tr><td colspan="6" style="padding:0 8px 16px;background:#F8FAFE">
+<table class="k-tbl" style="font-size:13px;background:#FFF;border:1px solid #E3E1DB;border-radius:8px">
+<thead><tr><th>Lecteur</th><th>Accès obtenu</th><th>Consultations</th><th>Téléchargement PDF</th><th></th></tr></thead>
+<tbody>
+<tr><td><b>m.leroux@banque-ouest.fr</b><br><span class="k-muted">Destinataire initial</span></td><td>14/10/2026 09:12</td><td>3 · dernière le 16/10, 11:05</td><td>Oui · 14/10, 09:20</td><td style="text-align:right"><span class="k-btn2 k-danger">Révoquer ce lecteur</span></td></tr>
+<tr><td><b>s.nguyen@banque-ouest.fr</b><br><span class="k-muted">Domaine</span></td><td>15/10/2026 14:30</td><td>2 · dernière le 15/10, 14:41</td><td>Non</td><td style="text-align:right"><span class="k-btn2 k-danger">Révoquer ce lecteur</span></td></tr>
+<tr><td><b>a.garnier@banque-ouest.fr</b><br><span class="k-muted">Transféré par m.leroux</span></td><td>17/11/2026 17:40</td><td>1 · hier, 17:42</td><td>Non</td><td style="text-align:right"><span class="k-btn2 k-danger">Révoquer ce lecteur</span></td></tr>
+</tbody></table>
+</td></tr>
+<tr>
+<td><span class="k-col" style="gap:2px"><b>H. Lefebvre — Dév. Java/Kafka</b><span class="k-muted">Envoyé le 09/10/2026</span></span></td>
+<td><span class="k-col" style="gap:2px">Enseigne Sport<span class="k-muted">Nominatif · 2 adresses</span></span></td>
+<td>08/12/2026</td>
+<td><b style="color:#7A4F00">Aucun lecteur</b><br><span class="k-muted">Code jamais demandé</span></td>
+<td><span class="k-pill k-ok">Actif</span></td>
+<td style="text-align:right"><span class="k-btn2">Détail</span></td>
+</tr>
+<tr>
+<td><span class="k-col" style="gap:2px"><b>N. Benali — Architecte</b><span class="k-muted">Envoyé le 21/10/2026</span></span></td>
+<td><span class="k-col" style="gap:2px">Région Hauts-de-France<span class="k-muted">Mot de passe · plateforme d'achat</span></span></td>
+<td>20/11/2026</td>
+<td><b>2 consultations</b><br><span class="k-muted">Lecteur non identifié (mode mot de passe)</span></td>
+<td><span class="k-pill k-ok">Actif</span></td>
+<td style="text-align:right"><span class="k-btn2">Détail</span></td>
+</tr>
+<tr>
+<td><span class="k-col" style="gap:2px"><b>I. Morel — QA e-commerce</b><span class="k-muted">Envoyé le 02/09/2026</span></span></td>
+<td><span class="k-col" style="gap:2px">Groupe Distribution Nord<span class="k-muted">Domaine @distrinord.fr</span></span></td>
+<td>02/10/2026</td>
+<td><b>2 lecteurs</b><br><span class="k-muted">5 consultations</span></td>
+<td><span class="k-pill">Expiré</span></td>
+<td style="text-align:right"><span class="k-btn2">Prolonger</span></td>
+</tr>
+</tbody></table></div>
+</section>
+</div>
+</div>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

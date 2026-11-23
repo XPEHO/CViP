@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Liste des consultants</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:#1B1F24;background:#F6F5F2}
+a{color:#1F4FB5}a:hover{color:#163A87}
+
+.k-card{background:#FFF;border:1px solid #E3E1DB;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;min-width:0}
+.k-h2{margin:0;font-size:18px;font-weight:800}
+.k-h3{margin:0;font-size:14px;font-weight:800}
+.k-muted{font-size:12px;color:#5A6069;line-height:1.5}
+.k-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.k-between{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.k-col{display:flex;flex-direction:column;gap:6px}
+.k-field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3A3F47}
+.k-row>.k-field{flex:1 1 200px}
+.k-inp{min-height:44px;padding:0 12px;border:1px solid #C9C6BE;border-radius:8px;font-family:inherit;font-size:14px;color:#1B1F24;background:#FFF;box-sizing:border-box;display:flex;align-items:center}
+.k-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:10px;border:none;background:#1F4FB5;color:#FFF;font-family:inherit;font-size:14px;font-weight:700;text-decoration:none;box-sizing:border-box}
+.k-btn2{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid #C9C6BE;background:#FFF;color:#1B1F24;font-family:inherit;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box;white-space:nowrap}
+.k-danger{border-color:#E7B4B4;color:#9B1C1C}
+.k-pill{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12px;font-weight:700;background:#ECEAE4;color:#3A3F47;white-space:nowrap}
+.k-ok{background:#E6F4EC;color:#1D6B43}.k-warn{background:#FBF0D9;color:#7A4F00}.k-err{background:#FBE7E7;color:#9B1C1C}.k-info{background:#E8EEFB;color:#163A87}
+.k-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#F1F0EC;font-size:13px;font-weight:600}
+.k-new{outline:2px dashed #E08A2E;outline-offset:3px}
+.k-tbl{width:100%;border-collapse:collapse;font-size:14px}
+.k-tbl th{text-align:left;color:#5A6069;font-size:12px;font-weight:700;padding:10px 8px;border-bottom:1px solid #E3E1DB}
+.k-tbl td{padding:12px 8px;border-bottom:1px solid #ECEAE4;vertical-align:top}
+.k-note{padding:12px 14px;border-radius:10px;background:#F4F7FD;border:1px solid #C9D6F3;font-size:13px;color:#163A87;line-height:1.5}
+.k-alert{padding:12px 14px;border-radius:10px;background:#FFF7E8;border:1px solid #EBCB8B;font-size:13px;color:#5C3D00;line-height:1.5}
+.k-radio{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #E3E1DB;border-radius:10px;font-size:14px}
+.k-radio.on{border-color:#1F4FB5;background:#F4F7FD}
+.k-dot{width:16px;height:16px;border-radius:50%;border:2px solid #9AA0A8;flex:none;margin-top:2px;box-sizing:border-box}
+.on .k-dot{border:5px solid #1F4FB5}
+.k-check{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px;font-weight:600}
+.k-check input{width:18px;height:18px;accent-color:#1F4FB5}
+.k-kpi{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid #E3E1DB;border-radius:12px;background:#FFF;flex:1 1 160px}
+.k-kpi b{font-size:26px;font-weight:800}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F5F2; display: flex; flex-wrap: wrap; font-family: 'Manrope', system-ui, sans-serif; color: #1B1F24">
+
+<nav aria-label="Navigation principale" style="flex: 1 1 220px; background: #FFFFFF; border-right: 1px solid #E3E1DB; padding: 24px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+<div style="width: 36px; height: 36px; border-radius: 8px; background: #1F4FB5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px">CV</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-weight: 800; font-size: 16px">CVthèque</span>
+<span style="font-size: 12px; color: #5A6069">XPEHO</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 0 12px 6px">Commerce</span>
+<a href="#" aria-current="page" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; color: #1F4FB5; background: #E8EEFB">Consultants</a>
+<a href="MissionsEnCours.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Missions en cours</a>
+<a href="AppelsOffre.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Appels d'offre &amp; versions</a>
+<a href="Partage.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Liens partagés</a>
+<span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6069; padding: 18px 12px 6px">Référentiels</span>
+<a href="Clients.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Clients</a>
+<a href="Projets.dc.html" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Projets</a>
+<a href="#" style="display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; color: #2B3038">Compétences &amp; technos</a>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; background: #F6F5F2">
+<div style="width: 32px; height: 32px; border-radius: 50%; background: #F3E3D3; color: #7A3E12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">SM</div>
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 13px; font-weight: 700">Sophie Martin</span>
+<span style="font-size: 12px; color: #5A6069">Rôle : Commercial</span>
+</div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; color: #5A6069; font-weight: 600">Commerce</span>
+<h1 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.01em">Consultants</h1>
+<span style="font-size: 14px; color: #5A6069">52 consultants · 9 disponibles sous 30 jours</span>
+</div>
+<button type="button" style="min-height: 44px; padding: 0 20px; border-radius: 10px; border: 1px solid #C9C6BE; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; color: #1B1F24">Relancer les CV non à jour (11)</button>
+</div>
+
+<section aria-label="Recherche et filtres" style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end">
+<label style="flex: 3 1 320px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Compétences, technos, rôle ou nom<input type="search" value="" placeholder="ex. Product Owner paiement Kafka" style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; box-sizing: border-box"></label>
+<label style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Disponibilité<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>Toutes</option><option>Immédiate</option><option>Sous 30 jours</option></select></label>
+<label style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Niveau minimum<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>Confirmé</option><option>Expert</option><option>Tous</option></select></label>
+<label style="flex: 1 1 140px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3F47">Expérience<select style="min-height: 44px; padding: 0 12px; border: 1px solid #C9C6BE; border-radius: 8px; font-family: inherit; font-size: 14px; color: #1B1F24; background: #FFFFFF"><option>5 ans et plus</option><option>Toutes</option></select></label>
+</div>
+<div class="k-row" style="align-items:flex-end">
+<div class="k-field">Localisation<span class="k-inp">Hauts-de-France ▾</span></div>
+<div class="k-field">Langue (niveau CECRL min.)<span class="k-inp">Anglais · B2 ▾</span></div>
+<div class="k-field">Secteur déjà pratiqué<span class="k-inp">Banque &amp; assurance ▾</span></div>
+<div class="k-field">Disponible au<span class="k-inp">01/2027</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="font-size: 13px; color: #5A6069; font-weight: 600">Critères actifs :</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 6px 6px 12px; border-radius: 999px; background: #E8EEFB; color: #163A87; font-size: 13px; font-weight: 700">Kafka<button type="button" aria-label="Retirer Kafka" style="width: 24px; height: 24px; border-radius: 50%; border: none; background: #FFFFFF; color: #163A87; font-family: inherit; font-size: 14px; font-weight: 800; line-height: 1">×</button></span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 6px 6px 12px; border-radius: 999px; background: #E8EEFB; color: #163A87; font-size: 13px; font-weight: 700">Paiement en ligne<button type="button" aria-label="Retirer Paiement en ligne" style="width: 24px; height: 24px; border-radius: 50%; border: none; background: #FFFFFF; color: #163A87; font-family: inherit; font-size: 14px; font-weight: 800; line-height: 1">×</button></span>
+<a href="#" style="font-size: 13px; font-weight: 700; margin-left: 4px">Tout effacer</a>
+</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 18px; border-radius: 10px; background: #1B1F24; color: #FFFFFF">
+<span style="font-size: 14px; font-weight: 700">2 consultants sélectionnés</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<button type="button" style="min-height: 40px; padding: 0 14px; border-radius: 8px; border: 1px solid #5A6069; background: transparent; font-family: inherit; font-size: 13px; font-weight: 700; color: #FFFFFF">Comparer</button>
+<a href="AppelsOffre.dc.html" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 8px; background: #FFFFFF; color: #1B1F24; text-decoration: none; font-size: 13px; font-weight: 700; box-sizing: border-box">Positionner sur un AO</a>
+</div>
+</div>
+
+<section style="background: #FFFFFF; border: 1px solid #E3E1DB; border-radius: 12px; padding: 8px 24px 16px">
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="text-align: left; color: #5A6069; font-size: 12px">
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; width: 36px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Sélection</span></th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Consultant</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Correspondance</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Disponibilité</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">CV à jour</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB; font-weight: 700">Versions</th>
+<th scope="col" style="padding: 14px 8px 10px; border-bottom: 1px solid #E3E1DB"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Actions</span></th>
+</tr>
+</thead>
+<tbody>
+<tr style="background: #F4F7FD">
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><input type="checkbox" checked aria-label="Sélectionner Camille Durand" style="width: 18px; height: 18px; accent-color: #1F4FB5"></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #DCE5F8; color: #1F4FB5; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex: none">CD</span><span style="display: flex; flex-direction: column; gap: 2px"><a href="Versions.dc.html" style="font-weight: 800; text-decoration: none">Camille Durand</a><span style="font-size: 12px; color: #5A6069">Product Owner e-commerce · 12 ans</span></span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-weight: 800; color: #1D6B43">2 / 2 critères</span><span style="font-size: 12px; color: #3A3F47">Kafka (projet) · Paiement · Expert</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700">03/2027</span><span style="font-size: 12px; color: #5A6069">En mission · Distribution Nord</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #FBF1DC; color: #7A4F00; font-size: 12px; font-weight: 700">Il y a 4 mois</span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">2</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; text-align: right"><a href="Versions.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9C6BE; color: #1B1F24; text-decoration: none; font-size: 13px; font-weight: 700; box-sizing: border-box">Créer une version</a></td>
+</tr>
+<tr style="background: #F4F7FD">
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><input type="checkbox" checked aria-label="Sélectionner Hugo Lefebvre" style="width: 18px; height: 18px; accent-color: #1F4FB5"></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #E3F0E8; color: #1D6B43; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex: none">HL</span><span style="display: flex; flex-direction: column; gap: 2px"><a href="Versions.dc.html" style="font-weight: 800; text-decoration: none">Hugo Lefebvre</a><span style="font-size: 12px; color: #5A6069">Développeur Java / Kafka · 8 ans</span></span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-weight: 800; color: #1D6B43">2 / 2 critères</span><span style="font-size: 12px; color: #3A3F47">Kafka · Expert · Paiement (projet)</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; color: #1D6B43">Immédiate</span><span style="font-size: 12px; color: #5A6069">Intercontrat depuis le 15/10</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">Il y a 9 jours</span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">3</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; text-align: right"><a href="Versions.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9C6BE; color: #1B1F24; text-decoration: none; font-size: 13px; font-weight: 700; box-sizing: border-box">Créer une version</a></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><input type="checkbox" aria-label="Sélectionner Nadia Benali" style="width: 18px; height: 18px; accent-color: #1F4FB5"></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #F3E3D3; color: #7A3E12; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex: none">NB</span><span style="display: flex; flex-direction: column; gap: 2px"><a href="Versions.dc.html" style="font-weight: 800; text-decoration: none">Nadia Benali</a><span style="font-size: 12px; color: #5A6069">Architecte solutions · 15 ans</span></span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-weight: 800; color: #3A3F47">1 / 2 critères</span><span style="font-size: 12px; color: #3A3F47">Kafka · Confirmé</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700">11/2026</span><span style="font-size: 12px; color: #5A6069">Fin de mission le 20/11</span></span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4"><span style="padding: 3px 8px; border-radius: 6px; background: #E6F4EC; color: #1D6B43; font-size: 12px; font-weight: 700">Il y a 1 mois</span></td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4">5</td>
+<td style="padding: 14px 8px; border-bottom: 1px solid #ECEAE4; text-align: right"><a href="Versions.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9C6BE; color: #1B1F24; text-decoration: none; font-size: 13px; font-weight: 700; box-sizing: border-box">Créer une version</a></td>
+</tr>
+<tr>
+<td style="padding: 14px 8px"><input type="checkbox" aria-label="Sélectionner Julien Roux" style="width: 18px; height: 18px; accent-color: #1F4FB5"></td>
+<td style="padding: 14px 8px"><span style="display: flex; align-items: center; gap: 10px"><span style="width: 36px; height: 36px; border-radius: 50%; background: #ECEAE4; color: #3A3F47; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex: none">JR</span><span style="display: flex; flex-direction: column; gap: 2px"><a href="Versions.dc.html" style="font-weight: 800; text-decoration: none">Julien Roux</a><span style="font-size: 12px; color: #5A6069">Scrum Master · 7 ans</span></span></span></td>
+<td style="padding: 14px 8px"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-weight: 800; color: #3A3F47">1 / 2 critères</span><span style="font-size: 12px; color: #3A3F47">Kafka (projet)</span></span></td>
+<td style="padding: 14px 8px"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 700; color: #1D6B43">Immédiate</span><span style="font-size: 12px; color: #5A6069">Intercontrat depuis le 02/10</span></span></td>
+<td style="padding: 14px 8px"><span style="padding: 3px 8px; border-radius: 6px; background: #FBE4E1; color: #8A2A1C; font-size: 12px; font-weight: 700">Il y a 14 mois</span></td>
+<td style="padding: 14px 8px">1</td>
+<td style="padding: 14px 8px; text-align: right"><a href="Versions.dc.html" style="display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9C6BE; color: #1B1F24; text-decoration: none; font-size: 13px; font-weight: 700; box-sizing: border-box">Créer une version</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 14px">
+<span style="font-size: 13px; color: #5A6069">4 résultats · triés par correspondance puis disponibilité</span>
+</div>
+</section>
+
+<p style="margin: 0; font-size: 13px; color: #5A6069">« (projet) » signale une techno connue par les projets du consultant sans être déclarée dans ses compétences.</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
