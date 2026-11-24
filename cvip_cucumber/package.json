@@ -1,0 +1,32 @@
+{
+  "name": "cvip_cucumber",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tests de bout en bout de l'API CViP (Cucumber)",
+  "scripts": {
+    "lint": "eslint .",
+    "e2e": "run-s --continue-on-error e2e:run e2e:report",
+    "e2e:run": "cucumber-js --format json:report/cucumber_report.json",
+    "e2e:ci": "run-s --continue-on-error e2e:run:ci e2e:report",
+    "e2e:run:ci": "cucumber-js --format json:report/cucumber_report.json --format junit:report/cucumber_junit.xml --format progress",
+    "e2e:report": "node scripts/generate-report.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.3.0",
+    "@eslint/js": "^10.0.1",
+    "@tsconfig/node26": "^26.0.2",
+    "@types/node": "^26.6.6",
+    "cucumber-html-reporter": "^7.2.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-jsdoc": "^65.5.4",
+    "globals": "^17.13.0",
+    "npm-run-all2": "^9.0.3",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.73.0"
+  },
+  "engines": {
+    "node": ">=26.0.0"
+  }
+}

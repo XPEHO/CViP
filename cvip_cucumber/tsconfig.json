@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node26/tsconfig.json",
+  "include": ["features/**/*.ts"],
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noUncheckedIndexedAccess": true,
+    "types": ["node"]
+  }
+}

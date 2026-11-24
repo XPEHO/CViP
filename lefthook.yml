@@ -1,0 +1,32 @@
+# Hooks installed by `npm install` (prepare script). Exceptional bypass: LEFTHOOK=0.
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: '*.{js,mjs,cjs,ts,mts,cts,json,vue,css,html,yml,yaml,md}'
+      run: npx prettier --check {staged_files}
+    eslint-backend:
+      root: cvip_backend/
+      glob: '*.{js,ts}'
+      run: npx eslint {staged_files}
+    eslint-frontend:
+      root: cvip_frontend/
+      glob: '*.{js,ts,vue}'
+      run: npx eslint {staged_files}
+    eslint-cucumber:
+      root: cvip_cucumber/
+      glob: '*.{js,mjs,ts}'
+      run: npx eslint {staged_files}
+    eslint-playwright:
+      root: cvip_playwright/
+      glob: '*.{js,ts}'
+      run: npx eslint {staged_files}
+    secrets:
+      run: node scripts/check-secrets.mjs
+    branch:
+      run: node scripts/check-branch.mjs
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+package-lock.json
+cvip_backend/migrations/
+doc/
+.claude/
+cvip_cucumber/report/
+cvip_playwright/report/
+cvip_playwright/test-results/

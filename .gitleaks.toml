@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Generated files without secrets"
+paths = ['''package-lock\.json''']

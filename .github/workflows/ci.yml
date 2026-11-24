@@ -4,40 +4,69 @@ on:
   pull_request:
   workflow_call:
 
+# Read-only token by default; a job that needs more asks for it itself.
+permissions:
+  contents: read
+
+# A new push on a PR cancels the previous run; `main` is never cancelled.
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+env:
+  GITLEAKS_VERSION: 8.30.1
+  ACTIONLINT_VERSION: 1.7.12
+  SEMGREP_VERSION: 1.180.0
+  SEMGREP_IMAGE_DIGEST: sha256:529ee8a277ec8adc5b534d7c74eea0a47e9de21d62852b6ba7ac6ba9566845c3
+
 jobs:
-  ci:
+  # A PR without code (docs, CLAUDE.md…) skips the heavy steps. Jobs required by the `main` ruleset
+  # still run (a job skipped at job level would not report its status): only their steps are
+  # conditional. On `main`, everything runs.
+  changes:
+    name: Changed files
     runs-on: ubuntu-latest
-
-    services:
-      db:
-        image: postgres:17-alpine
+    timeout-minutes: 5
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+      images: ${{ steps.filter.outputs.images }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0
+      - id: filter
         env:
-          POSTGRES_USER: cvip
-          POSTGRES_PASSWORD: cvip
-          POSTGRES_DB: cvip
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U cvip -d cvip"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 10
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$EVENT" != "pull_request" ]; then
+            printf 'code=true\nimages=true\n' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          files=$(git diff --name-only "$BASE_SHA...$HEAD_SHA")
+          echo "$files"
+          code_pattern='^(cvip_[a-z]+|scripts)/|^package(-lock)?\.json$|^\.nvmrc$|^docker-compose|^\.prettier|^commitlint|^lefthook|^sonar-project|^\.github/workflows/'
+          images_pattern='^(cvip_backend|cvip_frontend)/|^package(-lock)?\.json$|^scripts/prepare\.mjs$|^\.nvmrc$|^\.dockerignore$|^\.github/workflows/'
+          if grep -Eq "$code_pattern" <<< "$files"; then echo "code=true" >> "$GITHUB_OUTPUT"; else echo "code=false" >> "$GITHUB_OUTPUT"; fi
+          if grep -Eq "$images_pattern" <<< "$files"; then echo "images=true" >> "$GITHUB_OUTPUT"; else echo "images=false" >> "$GITHUB_OUTPUT"; fi
 
+  ci:
+    needs: changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    # Integration tests start their own Postgres (Testcontainers, runner Docker).
     env:
-      DATABASE_URL: postgres://cvip:cvip@localhost:5432/cvip
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
-          fetch-depth: 0 # historique complet pour l'analyse Sonar (blame, nouveau code)
+          fetch-depth: 0 # full history for the Sonar analysis (blame, new code)
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -45,43 +74,236 @@ jobs:
       - run: npm ci
 
       - name: Lint
+        if: needs.changes.outputs.code == 'true'
         run: npm run lint
 
-      - name: Migrations
-        run: npm run db:migrate
+      - name: Typecheck
+        if: needs.changes.outputs.code == 'true'
+        run: npm run typecheck
+
+      # Always runs: it also checks the Markdown and YAML of a docs-only PR.
+      - name: Format
+        run: npm run format:check
 
       - name: Tests
+        if: needs.changes.outputs.code == 'true'
         run: npm run test:coverage
 
-      # Les chemins lcov sont relatifs à chaque workspace, Sonar les attend depuis la racine
-      - name: Chemins de couverture
+      # lcov paths are relative to each workspace, Sonar expects them from the root
+      - name: Coverage paths
+        if: needs.changes.outputs.code == 'true'
         run: |
-          sed -i 's#^SF:#SF:backend/#' backend/coverage/lcov.info
-          sed -i 's#^SF:#SF:frontend/#' frontend/coverage/lcov.info
+          sed -i 's#^SF:#SF:cvip_backend/#' cvip_backend/coverage/lcov.info
+          sed -i 's#^SF:#SF:cvip_frontend/#' cvip_frontend/coverage/lcov.info
 
-      # Sans token (PR de fork, Dependabot), l'analyse est ignorée
+      # Without a token (fork PR, Dependabot), the analysis is skipped
       - name: SonarQube
         if: env.SONAR_TOKEN != ''
-        uses: SonarSource/sonarqube-scan-action@v8
+        uses: SonarSource/sonarqube-scan-action@70bad232163b09d998ea0707ee80c0ec80798c16 # v8.5.1
 
       - name: Build
+        if: needs.changes.outputs.code == 'true'
         run: npm run build
 
-  docker:
-    # Vérifie que les images se construisent (sans push) sur les PR
+  conventions:
+    # Branch name, PR title (squash merge: it becomes the commit message) and commits
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Branch name
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: node scripts/check-branch.mjs "$BRANCH"
+
+      - name: PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: echo "$PR_TITLE" | npx --no-install commitlint
+
+      - name: PR commits
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: npx --no-install commitlint --from "$BASE_SHA" --to "$HEAD_SHA"
+
+      - name: Script tests
+        run: npm run test:scripts
+
+  secrets:
+    name: Secrets (gitleaks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks (official binary, checksum verified)
+        run: |
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          archive="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl --proto '=https' --tlsv1.2 -fsSLO "${base}/${archive}"
+          curl --proto '=https' --tlsv1.2 -fsSLO "${base}/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+          grep " ${archive}\$" "gitleaks_${GITLEAKS_VERSION}_checksums.txt" | sha256sum -c -
+          tar -xzf "${archive}" gitleaks
+      - name: Scan the history
+        run: ./gitleaks git --redact --verbose
+
+  workflows:
+    name: Workflows (actionlint)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - name: Install actionlint (official binary, checksum verified)
+        run: |
+          base="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}"
+          archive="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl --proto '=https' --tlsv1.2 -fsSLO "${base}/${archive}"
+          curl --proto '=https' --tlsv1.2 -fsSLO "${base}/actionlint_${ACTIONLINT_VERSION}_checksums.txt"
+          grep " ${archive}\$" "actionlint_${ACTIONLINT_VERSION}_checksums.txt" | sha256sum -c -
+          tar -xzf "${archive}" actionlint
+      - name: Check the workflows
+        run: ./actionlint -color
+
+  semgrep:
+    name: Static analysis (Semgrep)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - name: Scan the source folders (image pinned by digest)
+        run: >-
+          docker run --rm -v "$PWD:/src" -w /src
+          "semgrep/semgrep@${SEMGREP_IMAGE_DIGEST}"
+          semgrep scan
+          --config p/typescript --config p/nodejs
+          --metrics off --error --quiet
+          cvip_backend/src cvip_frontend/src cvip_cucumber/features cvip_playwright/tests
+
+  e2e:
+    # Full stack (database, backend, frontend) started by Docker Compose, then tested from outside:
+    # `api` = Cucumber on the backend, `ui` = Playwright (+ axe-core accessibility) on the frontend.
+    needs: changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [api, ui]
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+        if: needs.changes.outputs.code == 'true'
+
+      # Throwaway values, valid for this run only: nothing is read from the repository.
+      - name: Stack environment
+        if: needs.changes.outputs.code == 'true'
+        run: |
+          {
+            echo "POSTGRES_USER=cvip"
+            echo "POSTGRES_PASSWORD=$(openssl rand -hex 16)"
+            echo "POSTGRES_DB=cvip"
+            echo "POSTGRES_PORT=5432"
+            echo "PORT=3000"
+            echo "FRONTEND_PORT=8080"
+          } > .env
+
+      - name: Start the stack
+        if: needs.changes.outputs.code == 'true'
+        run: docker compose up -d --build --wait
+
+      - name: Cucumber (API)
+        if: needs.changes.outputs.code == 'true' && matrix.suite == 'api'
+        env:
+          API_URL: http://localhost:3000
+        run: npm run e2e:ci -w cvip_cucumber
+
+      - name: Playwright browsers
+        if: needs.changes.outputs.code == 'true' && matrix.suite == 'ui'
+        run: npx playwright install --with-deps chromium webkit
+        working-directory: cvip_playwright
+
+      - name: Playwright (interface and accessibility)
+        if: needs.changes.outputs.code == 'true' && matrix.suite == 'ui'
+        env:
+          BASE_URL: http://localhost:8080
+        run: npm run e2e:ci -w cvip_playwright
+
+      - name: Stack logs
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Reports
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: e2e-${{ matrix.suite }}
+          path: |
+            cvip_cucumber/report
+            cvip_playwright/report
+          if-no-files-found: ignore
+
+      - name: Stop the stack
+        if: always() && needs.changes.outputs.code == 'true'
+        run: docker compose down -v
+
+  docker:
+    # Checks that the images build (no push) and contain what they should: a forgotten COPY or
+    # an embedded test file is invisible to tests that run outside Docker.
+    needs: changes
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
       matrix:
         app: [backend, frontend]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
 
-      - uses: docker/setup-buildx-action@v3
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+        if: needs.changes.outputs.images == 'true'
 
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        if: needs.changes.outputs.images == 'true'
         with:
           context: .
-          file: ${{ matrix.app }}/Dockerfile
+          file: cvip_${{ matrix.app }}/Dockerfile
           push: false
+          load: true
+          tags: cvip-${{ matrix.app }}:ci
           cache-from: type=gha,scope=${{ matrix.app }}
+
+      - name: Backend image content
+        if: needs.changes.outputs.images == 'true' && matrix.app == 'backend'
+        run: |
+          docker run --rm --entrypoint sh cvip-backend:ci -c '
+            test -d migrations || exit 10
+            test -f dist/server.js || exit 11
+            test -z "$(find dist -name "*.test.js" -o -type d -name test-utils)" || exit 12
+          ' || { echo "Wrong backend image content (code $?): migrations/ and dist/server.js expected, no test files or test-utils" >&2; exit 1; }
+
+      - name: Frontend image content
+        if: needs.changes.outputs.images == 'true' && matrix.app == 'frontend'
+        run: |
+          docker run --rm --entrypoint sh cvip-frontend:ci -c '
+            test -f /usr/share/nginx/html/index.html || exit 10
+            test -f /etc/nginx/templates/default.conf.template || exit 11
+          ' || { echo "Wrong frontend image content (code $?)" >&2; exit 1; }

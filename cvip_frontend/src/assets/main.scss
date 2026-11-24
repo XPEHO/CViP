@@ -1,0 +1,51 @@
+// Global styles: theme variables, reset and typographic base.
+:root {
+  --color-background: #f7f7f8;
+  --color-surface: #ffffff;
+  --color-border: #d9dbe1;
+  --color-text: #1f2023;
+  --color-muted: #565a63;
+  --color-primary: #1f5fbf;
+  --color-primary-hover: #184c99;
+  --color-on-primary: #ffffff;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+// Focus is always visible (RGAA 10.7).
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
