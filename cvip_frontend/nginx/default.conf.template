@@ -1,0 +1,21 @@
+server {
+    listen 8080;
+    root /usr/share/nginx/html;
+
+    # The 1 MB default is too low for file uploads: nginx would answer its own 413 before the
+    # request reaches the backend. Align this value with the real backend limit.
+    client_max_body_size 11m;
+
+    # The trailing "/" of proxy_pass strips the /api prefix: the backend receives /skills.
+    location /api/ {
+        proxy_pass ${BACKEND_URL}/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # SPA fallback (Vue Router in history mode)
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

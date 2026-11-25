@@ -1,0 +1,9 @@
+# What the assistant, the CI and the reference documentation read: review required.
+/.claude/ @VerlandeRyan
+/CLAUDE.md @VerlandeRyan
+/cvip_backend/CLAUDE.md @VerlandeRyan
+/cvip_frontend/CLAUDE.md @VerlandeRyan
+/cvip_cucumber/CLAUDE.md @VerlandeRyan
+/cvip_playwright/CLAUDE.md @VerlandeRyan
+/.github/ @VerlandeRyan
+/doc/ @VerlandeRyan
