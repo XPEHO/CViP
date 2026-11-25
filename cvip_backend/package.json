@@ -16,7 +16,7 @@
     "pretest": "npm run build",
     "test": "node --env-file-if-exists=../.env --test \"dist/**/*.test.js\"",
     "test:coverage": "npm run build && c8 node --env-file-if-exists=../.env --test \"dist/**/*.test.js\"",
-    "migrate": "node-pg-migrate -m migrations --migration-file-language sql --envPath ../.env",
+    "migrate": "node --env-file-if-exists=../.env ../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations --migration-file-language sql",
     "migrate:up": "npm run migrate -- up",
     "migrate:down": "npm run migrate -- down",
     "migrate:create": "npm run migrate -- create"

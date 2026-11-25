@@ -7,7 +7,7 @@ Monorepo (npm workspaces) :
 | `cvip_backend/`  | Node.js + Express 5, TypeScript, TypeORM, node-pg-migrate |
 | `cvip_frontend/` | Vue 3 + Vite, TypeScript, Vue Router, Pinia, ESLint       |
 
-PostgreSQL 17 est fourni par `docker-compose.yml`.
+PostgreSQL 18 est fourni par `docker-compose.yml`.
 
 ## Prérequis
 
@@ -68,7 +68,7 @@ npm run migrate:down -w cvip_backend                            # annule la dern
 
 - Branches : `type/CVIP-nn` (ex. `feat/CVIP-21`). Types : `feat`, `fix`, `chore`, `docs`, `test`, `refactor`, `style`, `hotfix`, `release`.
 - Commits et titre de PR : `type(CVIP-nn): sujet` (ex. `feat(CVIP-21): créer une version commerciale`). Sans ticket : scope `deps`, `repo`, `docs`, `ci` ou `docker` (ex. `chore(repo): ajouter Prettier`). Le squash merge reprend le titre de la PR.
-- Les hooks Git (lefthook) sont installés par `npm install` : Prettier, ESLint, nom de branche et message de commit sont vérifiés avant chaque commit. Les mêmes contrôles tournent en CI.
+- Les hooks Git (lefthook) sont installés par `npm install` : Prettier, ESLint, nom de branche et message de commit sont vérifiés avant chaque commit, et le nom de branche l'est aussi avant chaque push. Les mêmes contrôles tournent en CI.
 - Formatage : `npm run format` avant de pousser.
 
 ## Sécurité

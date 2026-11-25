@@ -44,7 +44,7 @@ export interface TestServer {
  * Call it before any dynamic import of the application: the configuration reads `DATABASE_URL` at import time.
  */
 export const startTestDatabase = async (): Promise<TestDatabase> => {
-  const container = await new PostgreSqlContainer('postgres:17-alpine').start()
+  const container = await new PostgreSqlContainer('postgres:18-alpine').start()
   const url = container.getConnectionUri()
   await runner({
     databaseUrl: url,
