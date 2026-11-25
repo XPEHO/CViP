@@ -75,7 +75,7 @@ npm run migrate:create -w cvip_backend -- nom-de-la-migration
 
 Utiliser `src/test-utils/integration.ts` (le fichier de test démarre sa propre base, donc pas de nettoyage) :
 
-- `before` : `startTestDatabase()` (Postgres 17 jetable, migrations rejouées, pose `DATABASE_URL`, fournit `database.pool` pour les fixtures SQL), puis `startTestServer()` : il initialise TypeORM et démarre l'app. Les imports de l'app sont **dynamiques** dans le helper : `config/env.ts` lit `DATABASE_URL` à l'import, un `import` statique de l'app en haut du fichier échouerait.
+- `before` : `startTestDatabase()` (Postgres 18 jetable, migrations rejouées, pose `DATABASE_URL`, fournit `database.pool` pour les fixtures SQL), puis `startTestServer()` : il initialise TypeORM et démarre l'app. Les imports de l'app sont **dynamiques** dans le helper : `config/env.ts` lit `DATABASE_URL` à l'import, un `import` statique de l'app en haut du fichier échouerait.
 - `server.api` : `get`, `post`, `patch`, `put`, `postRaw` ; renvoie `{ status, body }`.
 - `after` : `server.close()` (ferme aussi TypeORM) puis `database.stop()`.
 - Chaque fichier a sa base ; les fichiers tournent en parallèle, donc ne pas supposer d'état partagé.

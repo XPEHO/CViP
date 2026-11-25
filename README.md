@@ -7,7 +7,7 @@ Monorepo (npm workspaces) :
 | `cvip_backend/`  | Node.js + Express 5, TypeScript, TypeORM, node-pg-migrate |
 | `cvip_frontend/` | Vue 3 + Vite, TypeScript, Vue Router, Pinia, ESLint       |
 
-PostgreSQL 17 est fourni par `docker-compose.yml`.
+PostgreSQL 18 est fourni par `docker-compose.yml`.
 
 ## Prérequis
 
