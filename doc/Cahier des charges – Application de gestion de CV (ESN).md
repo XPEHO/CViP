@@ -1,6 +1,6 @@
 # Cahier des charges – Application de gestion de CV (ESN)
 
-Oct 27, 2026 · @baal
+Oct 27, 2026
 
 ## 1. Contexte et objectifs
 
@@ -16,6 +16,8 @@ L'ESN a besoin d'un outil unique pour tenir à jour les CV de ses consultants, p
 
 **Hors périmètre (à confirmer)** : facturation, temps passés (CRA), paie, recrutement / ATS, gestion des congés.
 
+**Hors périmètre (décidé)** : envoi d'e-mails automatiques (notifications, relances, rappels). Les informations à porter à l'attention des utilisateurs sont affichées dans l'application.
+
 ## 2. Acteurs et rôles
 
 Cinq profils d'utilisateurs internes, plus le client externe qui consulte un CV partagé sans compte dans l'application.
@@ -27,7 +29,7 @@ Cinq profils d'utilisateurs internes, plus le client externe qui consulte un CV 
 | Manager / Responsable d'agence | Voir les CV et missions de son équipe ; valider les CV (si workflow de validation) | Administrer l'application |
 | RH | Créer / désactiver les comptes collaborateurs ; voir tous les CV ; gérer les référentiels (compétences, diplômes) | Gérer les clients et missions (à confirmer) |
 | Administrateur | Paramétrage, rôles, modèles de CV, charte graphique, journaux d'audit | — |
-| Client / prospect (externe) | Consulter un CV partagé via URL + identifiant, pendant la durée de validité du lien ; télécharger en PDF (option) | Tout le reste |
+| Client / prospect (externe) | Consulter un CV partagé via son lien personnel + mot de passe, pendant la durée de validité du lien ; télécharger en PDF (option) | Tout le reste |
 
 ## 3. Exigences fonctionnelles
 
@@ -46,7 +48,7 @@ L'application s'articule autour de cinq modules ; le principe central est un **C
    8. Secteurs d'activité, centres d'intérêt (option).
 2. Saisie assistée : référentiel de compétences avec autocomplétion pour éviter les doublons (« React » / « ReactJS »).
 3. Import d'un CV existant (Word / PDF) pour l'amorçage, avec extraction automatique à relire (option, lot 2).
-4. Indicateur de complétude et date de dernière mise à jour ; relance automatique par e-mail si le CV n'a pas été mis à jour depuis X mois.
+4. Indicateur de complétude et date de dernière mise à jour ; un CV non mis à jour depuis X mois est signalé comme à mettre à jour dans l'application (pas de relance par e-mail).
 5. Historique des modifications du CV maître.
 6. Workflow de validation par le manager avant publication (à confirmer).
 
@@ -62,15 +64,12 @@ L'application s'articule autour de cinq modules ; le principe central est un **C
 ### 3.3 Génération HTML et partage client
 
 1. Rendu HTML du CV (maître ou version) selon un modèle à la charte de l'ESN, responsive, imprimable.
-2. Export PDF depuis le rendu HTML ; téléchargement activable ou non pour chaque lien ; filigrane portant l'e-mail du lecteur et la date.
-3. Création d'un lien de partage : URL unique non devinable, rattachée à un client, avec un mode d'accès choisi par le commercial :
-   - **Domaine (par défaut)** : toute adresse du domaine du client (ex. @client.fr) obtient l'accès par un code à usage unique envoyé par e-mail. Mode indisponible pour les messageries grand public (gmail, outlook…).
-   - **Nominatif** : accès réservé à une liste d'adresses, toujours par code e-mail.
-   - **Mot de passe (secours)** : URL + mot de passe transmis par un autre canal, pour les cas où les destinataires sont inconnus (plateformes d'achat).
-4. Durées : code valable 10 minutes ; accès maintenu quelques jours sur le même appareil ; expiration du lien à la date fixée par le commercial (30 jours par défaut, à confirmer).
-5. Transfert interne chez le client : le destinataire transfère le lien à un collègue de son domaine, qui obtient son propre code ; un bouton « Partager avec un collègue » sur la page envoie l'invitation. Une adresse hors domaine déclenche une demande d'accès, validée ou refusée par le commercial.
-6. Révocation globale du lien ou ciblée sur un lecteur.
-7. Traçabilité : chaque consultation est nominative (e-mail, date, téléchargement). Notifications au commercial : première consultation, nouveau lecteur, demande d'accès hors domaine.
+2. Export PDF depuis le rendu HTML ; téléchargement activable ou non pour chaque lien ; filigrane portant le nom et l'e-mail du destinataire et la date.
+3. Création d'un partage rattaché à un client : le commercial saisit un ou plusieurs destinataires nommés (nom, e-mail). L'application génère pour chacun un **lien personnel** (URL unique non devinable) et un **mot de passe**. Le commercial transmet lui-même le lien et le mot de passe par le canal de son choix (sa messagerie, téléphone, plateforme d'achat) ; l'application n'envoie aucun e-mail. Le lien et le mot de passe peuvent être transmis par deux canaux distincts.
+4. Durées : accès maintenu quelques jours sur le même appareil après saisie du mot de passe ; expiration du partage à la date fixée par le commercial (30 jours par défaut, à confirmer).
+5. Transfert interne chez le client : un lien personnel ne doit pas être retransmis. Un collègue qui a besoin du CV utilise « Demander un accès » sur la page (nom, e-mail, société) ; le commercial valide ou refuse la demande dans l'application, et transmet lui-même le nouveau lien personnel s'il la valide.
+6. Révocation globale du partage ou ciblée sur un destinataire.
+7. Traçabilité : chaque consultation est rattachée au destinataire du lien personnel utilisé (date, téléchargement, appareil). Le commercial suit dans l'application, sur chaque partage, les consultations et les demandes d'accès en attente ; aucune notification ne lui est envoyée par e-mail.
 8. Possibilité de partager plusieurs CV dans un même lien (dossier de candidature pour un appel d'offres) — à confirmer.
 9. Mention de confidentialité sur le rendu partagé.
 
@@ -95,7 +94,7 @@ L'application s'articule autour de cinq modules ; le principe central est un **C
 
 ### 3.5 Administration
 
-1. Gestion des comptes et des rôles ; authentification SSO de l'entreprise (Microsoft 365 / Google) à confirmer.
+1. Gestion des comptes et des rôles ; authentification propre à l'application (e-mail + mot de passe), indépendante du SSO de l'entreprise : le compte est créé par un RH ou un administrateur, qui obtient un mot de passe provisoire généré par l'application et le transmet lui-même à l'utilisateur ; celui-ci doit le changer à la première connexion. En cas d'oubli, un RH ou un administrateur réinitialise le mot de passe de la même façon. L'application n'envoie aucun e-mail.
 2. Gestion des référentiels : compétences, niveaux, certifications, secteurs.
 3. Gestion des modèles de CV (HTML/CSS) et de la charte graphique.
 4. Désactivation d'un consultant qui quitte l'ESN, avec règles de conservation et d'anonymisation.
@@ -117,16 +116,17 @@ Les CV sont des données personnelles : la sécurité des liens de partage et la
 
 **Sécurité**
 
-- Authentification SSO (OIDC) pour les utilisateurs internes, MFA recommandée.
+- Authentification des utilisateurs internes gérée par l'application, sans dépendance au fournisseur d'identité de l'entreprise : identifiant e-mail + mot de passe haché (Argon2id ou bcrypt), politique de robustesse des mots de passe, limitation des tentatives et verrouillage temporaire, réinitialisation par un RH ou un administrateur avec mot de passe provisoire à durée limitée et changement obligatoire à la première connexion, expiration de session et déconnexion ; MFA (TOTP) recommandée.
+- Seuls les comptes actifs peuvent se connecter ; la désactivation d'un compte invalide ses sessions en cours.
 - Contrôle d'accès par rôle (RBAC) appliqué côté serveur sur chaque requête.
-- Liens de partage : jeton aléatoire d'au moins 128 bits, mot de passe haché, limitation des tentatives, expiration par défaut (ex. 30 jours), pas d'indexation par les moteurs de recherche (`noindex`).
+- Liens de partage : un jeton aléatoire d'au moins 128 bits par destinataire, mot de passe généré et haché, limitation des tentatives, expiration par défaut (ex. 30 jours), pas d'indexation par les moteurs de recherche (`noindex`).
 - HTTPS partout, chiffrement des données au repos, sauvegardes quotidiennes chiffrées.
 
 **RGPD**
 
 - Base légale du traitement et information des collaborateurs (mention dans la politique de confidentialité interne, registre des traitements).
 - Minimisation : pas de date de naissance, d'adresse personnelle ni de situation familiale dans le CV par défaut ; photo facultative.
-- Le consultant voit à qui son CV a été partagé (à confirmer) ; droits d'accès, de rectification et de suppression.
+- Le consultant voit dans l'application à qui son CV a été partagé (client, date, destinataires), sans notification par e-mail ; droits d'accès, de rectification et de suppression.
 - Durées de conservation définies : CV d'un collaborateur parti, liens expirés, journaux de consultation.
 - Hébergement en UE.
 
@@ -144,7 +144,7 @@ Les CV sont des données personnelles : la sécurité des liens de partage et la
 
 ## 6. Architecture technique proposée
 
-Une application web classique suffit : une API unique, une interface interne derrière le SSO et des pages de CV partagés rendues côté serveur, isolées du reste.
+Une application web classique suffit : une API unique, une interface interne derrière l'authentification de l'application et des pages de CV partagés rendues côté serveur, isolées du reste.
 
 &#91;embedded content: architecture cible · web interne, page publique, API, 4 services\]
 
@@ -173,10 +173,10 @@ Un MVP centré sur le CV maître, les versions et le partage permet de mettre l'
 
 | Lot | Contenu | Durée indicative |
 | --- | --- | --- |
-| Lot 1 – MVP | Comptes et rôles, SSO ; CV maître ; versions commerciales ; rendu HTML + PDF ; liens de partage (accès par code e-mail en mode domaine ou nominatif, mot de passe en secours, transfert interne, révocation) ; un modèle de CV | 9 à 11 semaines |
+| Lot 1 – MVP | Comptes et rôles, authentification (connexion, mot de passe provisoire, réinitialisation par RH / administrateur) ; CV maître ; versions commerciales ; rendu HTML + PDF ; liens de partage (lien personnel + mot de passe par destinataire, demande d'accès, révocation) ; un modèle de CV | 9 à 11 semaines |
 | Lot 2 – Missions | Clients, projets, missions multi-consultants ; alimentation automatique des expériences ; vue missions en cours et intercontrats | 4 à 6 semaines |
 | Lot 3 – Productivité | Recherche multicritère ; import d'appels d'offres et rapprochement avec les profils ; import de CV Word/PDF ; CV en anglais ; plusieurs modèles ; dossiers multi-CV ; statistiques de consultation | 9 à 12 semaines |
-| Lot 4 – Options | Workflow de validation ; relances automatiques ; intégrations (CRM, SIRH) ; aide à la rédaction par IA | À définir |
+| Lot 4 – Options | Workflow de validation ; intégrations (CRM, SIRH) ; aide à la rédaction par IA | À définir |
 
 ## 8. Points à éclaircir
 
@@ -206,12 +206,12 @@ Ces questions conditionnent le modèle de données ou le chiffrage ; les cocher 
 
 **Partage client**
 
-- [ ] Valider le mode d'accès par défaut (domaine du client + code e-mail) et les cas où le mode mot de passe est autorisé ?
+- [x] Mode d'accès des lecteurs clients ? **Décision : pas d'envoi de code par e-mail ; lien personnel + mot de passe par destinataire, transmis par le commercial.**
 - [ ] Durée de validité par défaut et maximale d'un lien, durée de maintien de l'accès sur un appareil, durée de conservation des journaux de consultation ?
 - [ ] Le client peut-il télécharger le PDF, ou seulement consulter en ligne ?
 - [ ] Anonymisation par défaut pour les prospects (initiales, sans photo) ?
 - [ ] Partager plusieurs CV dans un même lien (dossier de réponse) ?
-- [ ] Quelles notifications le commercial veut-il recevoir (première consultation, nouveau lecteur, demande hors domaine) ?
+- [x] Quelles notifications le commercial veut-il recevoir (première consultation, nouveau lecteur, demande hors domaine) ? **Décision : aucune notification par e-mail ; ces événements sont consultables dans l'application.**
 
 **Clients, projets, missions**
 
@@ -226,7 +226,7 @@ Ces questions conditionnent le modèle de données ou le chiffrage ; les cocher 
 
 **Technique et conformité**
 
-- [ ] Fournisseur d'identité existant (Microsoft Entra ID, Google Workspace) ?
+- [ ] MFA obligatoire pour tous les utilisateurs internes, ou seulement pour les rôles à privilèges (administrateur, RH) ?
 - [ ] Contraintes d'hébergement (cloud UE, on-premise, SecNumCloud) ?
 - [ ] Charte graphique et modèles de CV existants à reproduire ?
 - [ ] Durées de conservation des CV des collaborateurs partis et des journaux de consultation ? Avis du DPO ?

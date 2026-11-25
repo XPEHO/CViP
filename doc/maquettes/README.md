@@ -7,6 +7,20 @@ Maquettes des écrans de l'application. Base : artefact claude.ai « CVthèque X
 
 Le [cahier des charges](../Cahier%20des%20charges%20–%20Application%20de%20gestion%20de%20CV%20(ESN).md) reste la référence fonctionnelle : en cas d'écart, il fait foi.
 
+## Révision du 2026-11-23 (CVIP-9)
+
+L'application n'envoie plus aucun e-mail automatique et l'authentification interne est propre à l'application.
+
+| Écran | Correction | Référence CDC |
+| --- | --- | --- |
+| 5 · Liens de partage | Un lien personnel + mot de passe par destinataire, à transmettre par le commercial ; modes domaine / nominatif par code e-mail et transfert interne retirés ; demandes d'accès traitées dans l'application ; plus de notifications e-mail ; partage visible par le consultant | §3.3.3 à 3.3.7, §5 |
+| 6 · CV client | Bouton « Partager avec un collègue » retiré ; renvoi vers la demande d'accès ; filigrane au nom du destinataire | §3.3.2, 3.3.5 |
+| 14 · Accès client | Saisie du mot de passe du lien personnel ; formulaire « Demander un accès » ; plus de code e-mail | §3.3.3 à 3.3.5 |
+| 10 · Consultants | « Relancer les CV non à jour » remplacé par « Afficher les CV non à jour » | §3.1.4 |
+| 16 · Connexion | E-mail + mot de passe ; mot de passe provisoire transmis par les RH ; SSO retiré | §3.5.1, §5 |
+| 18 · Comptes et rôles | Réinitialisation du mot de passe par les RH, sans e-mail | §3.5.1, §5 |
+| 20 · Journal d'audit | Événements alignés (demande d'accès acceptée, liens personnels) | §3.5.5 |
+
 ## Révision du 2026-11-18
 
 | Écran | Correction | Référence CDC |
@@ -116,9 +130,9 @@ Source : [`sources/AppelsOffre.dc.html`](sources/AppelsOffre.dc.html)
 
 ## Accès client, missions, connexion
 
-### 14 · Client — Accès au CV (code e-mail, mot de passe)
+### 14 · Client — Accès au CV (lien personnel, mot de passe)
 
-![14 · Client — Accès au CV (code e-mail, mot de passe)](captures/Acces.png)
+![14 · Client — Accès au CV (lien personnel, mot de passe)](captures/Acces.png)
 
 Source : [`sources/Acces.dc.html`](sources/Acces.dc.html)
 
@@ -128,9 +142,9 @@ Source : [`sources/Acces.dc.html`](sources/Acces.dc.html)
 
 Source : [`sources/MissionsEnCours.dc.html`](sources/MissionsEnCours.dc.html)
 
-### 16 · Tous — Connexion SSO
+### 16 · Tous — Connexion
 
-![16 · Tous — Connexion SSO](captures/Connexion.png)
+![16 · Tous — Connexion](captures/Connexion.png)
 
 Source : [`sources/Connexion.dc.html`](sources/Connexion.dc.html)
 
